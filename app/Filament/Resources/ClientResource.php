@@ -106,6 +106,11 @@ class ClientResource extends Resource
     public static function getRelations(): array
     {
         return [
+            'means' => RelationManagers\MeansRelationManager::class,
+//            'suppliers' => RelationManagers\SuppliersRelationManager::class,
+//            'spendingsMeans' => RelationManagers\SpendingsMeansRelationManager::class,
+//            'spendingsSuppliers' => RelationManagers\SpendingsSuppliersRelationManager::class,
+            'publicSessions' => RelationManagers\PublicSessionsRelationManager::class,
         ];
     }
 
