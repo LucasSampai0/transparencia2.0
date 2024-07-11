@@ -18,8 +18,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('admin/clients', ClientsList::class)->name('admin.clients.index');
-    Route::get('admin/clients/create', ClientsForm::class)->name('admin.clients.create');
-    Route::get('admin/clients/update/{slug}', ClientsForm::class)->name('admin.clients.update');
 
 });
