@@ -56,6 +56,7 @@ class ClientResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->searchPlaceholder('Buscar Clientes')
             ->columns([
                 ImageColumn::make('logo')
                     ->circular()
@@ -64,7 +65,7 @@ class ClientResource extends Resource
                 TextColumn::make('name')->label('Nome')->searchable()->sortable(),
                 TextColumn::make('cnpj')->label('CNPJ')->searchable()->toggleable(),
                 TextColumn::make('address')->label('Endereço')->searchable()->toggleable(),
-                TextColumn::make('slug')->label('Slug')->toggleable(),
+                TextColumn::make('slug')->label('Slug')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //
@@ -72,9 +73,9 @@ class ClientResource extends Resource
             ->actions([
                 ActionGroup::make([
 
-                    ViewAction::make(),
+                    ViewAction::make()->label('Visualizar'),
 
-                    EditAction::make(),
+                    EditAction::make()->label('Editar'),
 
                     Action::make('mean')
                         ->label('Veículos')
@@ -92,14 +93,15 @@ class ClientResource extends Resource
                         ->label('Sessões Públicas')
                         ->icon('heroicon-o-user-group'),
 
-                    DeleteAction::make(),
+                    DeleteAction::make()->label('Deletar'),
                 ]),
 
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()
+                    ->label('Deletar'),
+                ])->label('Ação em massa'),
             ]);
     }
 
@@ -107,7 +109,7 @@ class ClientResource extends Resource
     {
         return [
             'means' => RelationManagers\MeansRelationManager::class,
-//            'suppliers' => RelationManagers\SuppliersRelationManager::class,
+            'suppliers' => RelationManagers\SupplierRelationManager::class,
 //            'spendingsMeans' => RelationManagers\SpendingsMeansRelationManager::class,
 //            'spendingsSuppliers' => RelationManagers\SpendingsSuppliersRelationManager::class,
             'publicSessions' => RelationManagers\PublicSessionsRelationManager::class,

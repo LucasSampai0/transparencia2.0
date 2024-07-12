@@ -10,10 +10,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class PublicSessionsRelationManager extends RelationManager
 {
     protected static string $relationship = 'publicSessions';
+
+    protected static ?string $title = 'Sessões Públicas';
 
     public function form(Form $form): Form
     {
@@ -27,8 +30,8 @@ class PublicSessionsRelationManager extends RelationManager
                     ->required(),
                 Forms\Components\TimePicker::make('time')
                     ->required()
-                    ->format('H:i')
-                ->time(00, 00, 00),
+                    ->time('H:i')
+                ->seconds(false),
                 Forms\Components\FileUpload::make('file')
                     ->label('Anexo')
                     ->disk('public')
@@ -41,26 +44,29 @@ class PublicSessionsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->searchPlaceholder('Buscar Sessões Públicas')
             ->recordTitle('Sessão Pública')
             ->columns([
                 TextColumn::make('description')->label('Descrição')->searchable(),
                 TextColumn::make('date')->label('Data')->searchable(),
-                TextColumn::make('time')->label('Hora')->toggleable(),
-            ])
+                TextColumn::make('time')->label('Hora')->toggleable()->time('H:i'),
+                TextColumn::make('attachment')->label('Anexo')
+                    ->url(fn($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment ) : null)->openUrlInNewTab(),
+                ])
             ->filters([
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()->label('Adicionar'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()->label('Editar'),
+                Tables\Actions\DeleteAction::make()->label('Deletar'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()->label('Deletar'),
+                ])->label('Ação em massa'),
             ]);
     }
 }

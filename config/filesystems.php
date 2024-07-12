@@ -44,6 +44,21 @@ return [
             'throw' => false,
         ],
 
+        'attachments' => [
+            'driver' => 'local',
+            'root' => storage_path('app/attachments'),
+            'url' => env('APP_URL').'/storage/attachments',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'logos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/logos'),
+            'url' => env('APP_URL').'/storage/logos',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
