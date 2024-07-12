@@ -33,6 +33,7 @@ class SupplierRelationManager extends RelationManager
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required()
+                    ->searchable()
                     ->label('Categoria'),
             ])->columns(3);
     }

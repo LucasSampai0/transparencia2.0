@@ -48,21 +48,23 @@ class MeansRelationManager extends RelationManager
                         Forms\Components\Select::make('category_id')
                             ->label('Categoria')
                             ->relationship('category', 'name')
+                            ->searchable()
                             ->required(),
                     ])->columns(3),
 
 
                 Section::make('Documentos')
                     ->schema([
-                        Repeater::make('meanAttachments')
+                        Repeater::make('Documento')
                             ->relationship('meanAttachments')
+                            ->hiddenLabel()
                             ->schema([
                                 TextInput::make('title')
                                     ->required()
-                                    ->label('Attachment Title'),
+                                    ->label('Título'),
                                 FileUpload::make('file')
                                     ->required()
-                                    ->label('Attachment File'),
+                                    ->label('Anexo'),
                             ])->columns(2)
                             ->collapsed()
                             ->cloneable()
