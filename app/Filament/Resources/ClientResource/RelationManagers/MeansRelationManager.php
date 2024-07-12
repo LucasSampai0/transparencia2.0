@@ -71,7 +71,8 @@ class MeansRelationManager extends RelationManager
                             ->collapsible()
                             ->itemLabel(function (array $state): string {
                                 return $state['title'] ?? 'Anexo sem nome';
-                            }),
+                            })
+                            ->createItemButtonLabel('Adicionar Documento'),
                     ])->columnSpanFull(),
             ]);
 
