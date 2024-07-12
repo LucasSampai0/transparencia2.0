@@ -7,7 +7,9 @@ use App\Filament\Resources\ClientResource\RelationManagers;
 use App\Models\Client;
 use Filament\Actions\Action;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -32,24 +34,27 @@ class ClientResource extends Resource
     protected static ?string $modelLabel = 'Clientes';
 
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                FileUpload::make('logo')->
-                image()->
-                disk('public')->
-                directory('logos')->
-                label('Logo'),
 
-                TextInput::make('name')->label('Nome'),
+                FileUpload::make('logo')
+                    ->image()
+                    ->disk('public')
+                    ->directory('logos')
+                    ->hiddenLabel()
+                    ->label('Logo')
+                    ->columnSpan(2)->maxWidth('w-1/2'),
 
-                TextInput::make('cnpj')->label('CNPJ'),
 
-                TextInput::make('address')->label('Endereço'),
+                TextInput::make('name')->prefix('Nome')->hiddenLabel(),
 
-                TextInput::make('slug')->label('Slug'),
+                TextInput::make('cnpj')->prefix('CNPJ')->hiddenLabel()->mask('99.999.999/9999-99'),
+
+                TextInput::make('address')->prefix('Endereço')->hiddenLabel(),
+
+                TextInput::make('slug')->prefix('Slug')->hiddenLabel(),
             ]);
     }
 
@@ -100,7 +105,7 @@ class ClientResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make()
-                    ->label('Deletar'),
+                        ->label('Deletar'),
                 ])->label('Ação em massa'),
             ]);
     }

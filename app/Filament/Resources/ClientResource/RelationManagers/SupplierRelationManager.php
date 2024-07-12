@@ -16,6 +16,7 @@ class SupplierRelationManager extends RelationManager
 
     protected static ?string $title = 'Fornecedores';
 
+    protected static ?string $label = 'Fornecedor';
 
     public function form(Form $form): Form
     {
@@ -24,24 +25,24 @@ class SupplierRelationManager extends RelationManager
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                ->label('Nome'),
+                    ->label('Nome'),
                 Forms\Components\TextInput::make('cnpj')
                     ->required()
-                ->label('CNPJ'),
+                    ->label('CNPJ')
+                    ->mask('99.999.999/9999-99'),
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required()
-                ->label('Categoria'),
-            ]);
+                    ->label('Categoria'),
+            ])->columns(3);
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->searchPlaceholder('Buscar Fornecedores')
             ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')->label('Nome'),
                 Tables\Columns\TextColumn::make('cnpj')->label('CNPJ'),
                 Tables\Columns\TextColumn::make('category.name')->label('Categoria')->searchable(),
             ])
@@ -49,16 +50,17 @@ class SupplierRelationManager extends RelationManager
 
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->label('Editar'),
-                Tables\Actions\DeleteAction::make()->label('Deletar'),
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()
+                ])
+
             ]);
     }
 }
