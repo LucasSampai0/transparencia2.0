@@ -23,7 +23,6 @@ class MeanFactory extends Factory
             'cnpj' => $this->faker->numerify('##.###.###/####-##'),
             'category_id' => Category::factory(),
             'client_id' => Client::factory(),
-            'attachment' => $this->faker->image('public/storage/attachments', 50, 50, null, false),
         ];
     }
 }

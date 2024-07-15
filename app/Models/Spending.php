@@ -11,20 +11,13 @@ class Spending extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date',
+        'date' => 'date:d-m-Y',
         'total',
         'category_id',
         'client_id',
         'supplier_id',
         'type'
     ];
-
-    protected static function booted()
-    {
-        static::addGlobalScope('type', function(Builder $builder){
-            $builder->where('type', static::class);
-        });
-    }
 
     public function category()
     {

@@ -11,6 +11,7 @@
         "laravel/jetstream": "^5.1",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "leandrocfe/filament-ptbr-form-fields": "^3.0",
         "livewire/livewire": "^3.0"
     },
     "require-dev": {

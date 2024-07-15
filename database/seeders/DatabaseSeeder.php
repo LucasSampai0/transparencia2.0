@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Mean;
 use App\Models\MeanAttachment;
 use App\Models\PublicSession;
+use App\Models\Spending;
 use App\Models\SpendingMean;
 use App\Models\SpendingSupplier;
 use App\Models\Supplier;
@@ -37,8 +38,8 @@ class DatabaseSeeder extends Seeder
             PublicSession::factory(3)->create(['client_id' => $client->id]);
             Mean::factory(3)->create(['client_id' => $client->id]);
             Supplier::factory(3)->create(['client_id' => $client->id]);
-            SpendingMean::factory(3)->create(['client_id' => $client->id]);
-            SpendingSupplier::factory(3)->create(['client_id' => $client->id]);
+            Spending::factory(5)->create(['client_id' => $client->id, 'type' => 'spending_mean']);
+            Spending::factory(5)->create(['client_id' => $client->id, 'type' => 'spending_supplier']);
         });
 
         //create 5 mean_attachment for each mean avaliabe

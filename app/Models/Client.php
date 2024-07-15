@@ -39,7 +39,7 @@ class Client extends Model
 
     public function spendings()
     {
-        return $this->hasMany(SpendingMean::class);
+        return $this->hasMany(Spending::class);
     }
 
 }
