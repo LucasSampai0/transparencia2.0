@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SpendingSupplier>
  */
-class SpendingSupplierFactory extends Factory
+class SpendingSupplierFactory extends SpendingFactory
 {
     /**
      * Define the model's default state.
@@ -19,12 +19,8 @@ class SpendingSupplierFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'date' => $this->faker->date(),
-            'total' => $this->faker->randomFloat(2, 0, 1000),
-            'category_id' => Category::all()->random()->id,
-            'client_id' => Client::all()->random()->id,
-            'supplier_id' => Supplier::all()->random()->id,
-        ];
+        return array_merge(parent::definition(), [
+            'type' => 'spending_supplier',
+        ]);
     }
 }

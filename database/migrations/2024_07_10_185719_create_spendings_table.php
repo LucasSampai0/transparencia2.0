@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spending_suppliers', function (Blueprint $table) {
+        Schema::create('spendings', function (Blueprint $table) {
             $table->id();
             $table->date('date');
             $table->decimal('total', 10, 2);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('spending_suppliers');
+        Schema::dropIfExists('spendings');
     }
 };

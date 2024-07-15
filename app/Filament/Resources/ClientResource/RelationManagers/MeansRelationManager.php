@@ -99,7 +99,7 @@ class MeansRelationManager extends RelationManager
                 Tables\Actions\Action::make('viewAttachments')
                     ->label('Ver Documentos')
                     ->icon('heroicon-o-eye')
-                    ->modalHeading('')
+                    ->modalHeading('Documentos')
                     ->modalContent(function ($record) {
                         return view('filament.resources.mean.view-attachments-modal', ['mean' => $record]);
                     })

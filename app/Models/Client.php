@@ -37,13 +37,9 @@ class Client extends Model
         return $this->hasMany(Supplier::class);
     }
 
-    public function spendingsMeans()
+    public function spendings()
     {
         return $this->hasMany(SpendingMean::class);
     }
 
-    public function spendingsSuppliers()
-    {
-        return $this->hasMany(SpendingSupplier::class);
-    }
 }

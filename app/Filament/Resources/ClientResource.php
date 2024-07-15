@@ -118,7 +118,7 @@ class ClientResource extends Resource
         return [
             'means' => RelationManagers\MeansRelationManager::class,
             'suppliers' => RelationManagers\SupplierRelationManager::class,
-//            'spendingsMeans' => RelationManagers\SpendingsMeansRelationManager::class,
+            'spendings' => RelationManagers\SpendingsRelationManager::class,
 //            'spendingsSuppliers' => RelationManagers\SpendingsSuppliersRelationManager::class,
             'publicSessions' => RelationManagers\PublicSessionsRelationManager::class,
         ];

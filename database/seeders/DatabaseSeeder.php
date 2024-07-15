@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
             PublicSession::factory(3)->create(['client_id' => $client->id]);
             Mean::factory(3)->create(['client_id' => $client->id]);
             Supplier::factory(3)->create(['client_id' => $client->id]);
-            SpendingMean::factory(3)->create();
-            SpendingSupplier::factory(3)->create();
+            SpendingMean::factory(3)->create(['client_id' => $client->id]);
+            SpendingSupplier::factory(3)->create(['client_id' => $client->id]);
         });
 
         //create 5 mean_attachment for each mean avaliabe
