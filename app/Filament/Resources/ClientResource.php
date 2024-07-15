@@ -51,11 +51,17 @@ class ClientResource extends Resource
                             ->schema([
                                 TextInput::make('name')->prefix('Nome')->hiddenLabel(),
 
-                                TextInput::make('cnpj')->prefix('CNPJ')->hiddenLabel()->mask('99.999.999/9999-99')->unique('clients', 'cnpj'),
+                                TextInput::make('cnpj')->prefix('CNPJ')
+                                    ->unique(ignoreRecord: true)
+                                    ->hiddenLabel()
+                                    ->mask('99.999.999/9999-99'),
 
                                 TextInput::make('address')->prefix('Endereço')->hiddenLabel(),
 
-                                TextInput::make('slug')->prefix('Slug')->hiddenLabel()->unique('clients', 'slug'),
+                                TextInput::make('slug')
+                                    ->unique(ignoreRecord: true)
+                                    ->prefix('Slug')
+                                    ->hiddenLabel()
                             ])->columnSpan(5)
                     ])
             ]);
@@ -119,7 +125,6 @@ class ClientResource extends Resource
             'means' => RelationManagers\MeansRelationManager::class,
             'suppliers' => RelationManagers\SupplierRelationManager::class,
             'spendings' => RelationManagers\SpendingsRelationManager::class,
-//            'spendingsSuppliers' => RelationManagers\SpendingsSuppliersRelationManager::class,
             'publicSessions' => RelationManagers\PublicSessionsRelationManager::class,
         ];
     }
