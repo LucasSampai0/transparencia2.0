@@ -38,23 +38,26 @@ class ClientResource extends Resource
     {
         return $form
             ->schema([
+                Grid::make(6)
+                    ->schema([
+                        FileUpload::make('logo')
+                            ->avatar()
+                            ->disk('public')
+                            ->directory('logos')
+                            ->hiddenLabel()
+                            ->label('Logo'),
 
-                FileUpload::make('logo')
-                    ->image()
-                    ->disk('public')
-                    ->directory('logos')
-                    ->hiddenLabel()
-                    ->label('Logo')
-                    ->columnSpan(2)->maxWidth('w-1/2'),
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('name')->prefix('Nome')->hiddenLabel(),
 
+                                TextInput::make('cnpj')->prefix('CNPJ')->hiddenLabel()->mask('99.999.999/9999-99')->unique('clients', 'cnpj'),
 
-                TextInput::make('name')->prefix('Nome')->hiddenLabel(),
+                                TextInput::make('address')->prefix('Endereço')->hiddenLabel(),
 
-                TextInput::make('cnpj')->prefix('CNPJ')->hiddenLabel()->mask('99.999.999/9999-99'),
-
-                TextInput::make('address')->prefix('Endereço')->hiddenLabel(),
-
-                TextInput::make('slug')->prefix('Slug')->hiddenLabel(),
+                                TextInput::make('slug')->prefix('Slug')->hiddenLabel()->unique('clients', 'slug'),
+                            ])->columnSpan(5)
+                    ])
             ]);
     }
 

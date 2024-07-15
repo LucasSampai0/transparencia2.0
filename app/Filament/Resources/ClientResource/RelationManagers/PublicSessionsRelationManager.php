@@ -37,11 +37,10 @@ class PublicSessionsRelationManager extends RelationManager
                     ->time('H:i')
                     ->seconds(false)
                     ->label('Hora'),
-                Forms\Components\FileUpload::make('file')
+                Forms\Components\FileUpload::make('attachment')
                     ->label('Anexo')
-                    ->disk('public')
-                    ->directory('attachments')
-                    ->preserveFilenames()->columnSpanFull()
+                    ->disk('attachments')
+                    ->columnSpanFull()
             ]);
     }
 
