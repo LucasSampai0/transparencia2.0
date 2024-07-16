@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ClientResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\ListRecords\Tab;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -26,9 +27,9 @@ class SpendingsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\DatePicker::make('date')
+                DatePicker::make('date')
                     ->label('Data')
-                    ->format('d-m-Y')
+                    ->format('Y-m-d')
                     ->required(),
                 Money::make('total')
                     ->label('Total')

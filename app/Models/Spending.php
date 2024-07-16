@@ -11,7 +11,7 @@ class Spending extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date' => 'date:d-m-Y',
+        'date',
         'total',
         'category_id',
         'client_id',
