@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources\ClientResource\RelationManagers;
 
+use App\Models\Category;
 use App\Models\Mean;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -49,6 +51,7 @@ class MeansRelationManager extends RelationManager
                             ->label('Categoria')
                             ->relationship('category', 'name')
                             ->searchable()
+                            ->options(Category::all()->pluck('name', 'id'))
                             ->required(),
                     ])->columns(3),
 

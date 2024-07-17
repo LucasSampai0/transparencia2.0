@@ -18,6 +18,6 @@ class Client extends Component
 
     public function render()
     {
-        return view('livewire.public.client')->layout('layouts.public');
+        return view('livewire.public.client')->layout('layouts.public', ['client' => $this->client]);
     }
 }

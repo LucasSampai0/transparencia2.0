@@ -102,6 +102,7 @@ class ClientResource extends Resource
             ->columns([
                 ImageColumn::make('logo')
                     ->circular()
+                    ->disk('logos')
                     ->label('Logo')
                     ->placeholder('https://via.placeholder.com/150'),
                 TextColumn::make('name')->label('Nome')->searchable()->sortable(),
