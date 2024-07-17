@@ -19,8 +19,8 @@ class SpendingSeeder extends Seeder
      */
     public function run(): void
     {
-        Client::all()->each(function ($client) {
-            Spending::factory(3)->create(['client_id' => $client->id]);
-        });
+//        Client::all()->each(function ($client) {
+//            Spending::factory(3)->create(['client_id' => $client->id]);
+//        });
     }
 }

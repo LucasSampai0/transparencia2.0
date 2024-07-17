@@ -14,7 +14,9 @@ class Client extends Model
         'name',
         'cnpj',
         'address',
-        'slug'
+        'slug',
+        'phone',
+        'site'
     ];
 
 

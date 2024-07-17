@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('cnpj');
             $table->string('address');
             $table->string('slug');
+            $table->string('phone')->nullable();
+            $table->string('site')->nullable();
             $table->timestamps();
         });
     }

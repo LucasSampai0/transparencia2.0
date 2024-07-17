@@ -14,8 +14,8 @@ class MeanAttachmentSeeder extends Seeder
      */
     public function run(): void
     {
-        Mean::class::all()->each(function ($mean) {
-            MeanAttachment::factory(5)->create(['mean_id' => $mean->id]);
-        });
+//        Mean::class::all()->each(function ($mean) {
+//            MeanAttachment::factory(5)->create(['mean_id' => $mean->id]);
+//        });
     }
 }

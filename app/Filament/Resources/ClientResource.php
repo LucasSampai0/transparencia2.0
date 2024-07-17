@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ClientResource\Pages;
 use App\Filament\Resources\ClientResource\RelationManagers;
 use App\Models\Client;
+use Faker\Provider\Text;
 use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -13,6 +14,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -42,26 +44,52 @@ class ClientResource extends Resource
                     ->schema([
                         FileUpload::make('logo')
                             ->avatar()
-                            ->disk('public')
-                            ->directory('logos')
+                            ->disk('logos')
                             ->hiddenLabel()
                             ->label('Logo'),
 
                         Grid::make(2)
                             ->schema([
-                                TextInput::make('name')->prefix('Nome')->hiddenLabel(),
+                                TextInput::make('name')
+                                    ->prefixIcon('heroicon-o-user')
+                                    ->prefix('Nome')
+                                    ->hiddenLabel(),
 
                                 TextInput::make('cnpj')->prefix('CNPJ')
+                                    ->prefixIcon('heroicon-o-identification')
                                     ->unique(ignoreRecord: true)
                                     ->hiddenLabel()
                                     ->mask('99.999.999/9999-99'),
 
-                                TextInput::make('address')->prefix('Endereço')->hiddenLabel(),
+                                TextInput::make('address')
+                                    ->prefixIcon('heroicon-o-map-pin')
+                                    ->prefix('Endereço')
+                                    ->hiddenLabel(),
 
                                 TextInput::make('slug')
+                                    ->prefixIcon('heroicon-o-link')
                                     ->unique(ignoreRecord: true)
                                     ->prefix('Slug')
+                                    ->hiddenLabel(),
+
+                                TextInput::make('phone')
+                                    ->prefixIcon('heroicon-o-phone')
+                                    ->tel()
+                                    ->prefix('Telefone')
                                     ->hiddenLabel()
+                                    ->mask(
+                                        RawJs::make( <<<'JS'
+                                            $input.length > 14
+                                                ? '(99) 99999-9999'
+                                                : '(99) 9999-9999'
+                                        JS)
+                                    ),
+
+                                TextInput::make('site')
+                                    ->prefixIcon('heroicon-o-globe-alt')
+                                    ->url()
+                                    ->prefix('Site')
+                                    ->hiddenLabel(),
                             ])->columnSpan(5)
                     ])
             ]);
@@ -91,21 +119,21 @@ class ClientResource extends Resource
 
                     EditAction::make()->label('Editar'),
 
-                    Action::make('mean')
-                        ->label('Veículos')
-                        ->icon('heroicon-o-megaphone'),
-
-                    Action::make('supplier')
-                        ->label('Fornecedores')
-                        ->icon('heroicon-o-truck'),
-
-                    Action::make('spending')
-                        ->label('Investimentos')
-                        ->icon('heroicon-o-banknotes'),
-
-                    Action::make('publicSession')
-                        ->label('Sessões Públicas')
-                        ->icon('heroicon-o-user-group'),
+//                    Action::make('mean')
+//                        ->label('Veículos')
+//                        ->icon('heroicon-o-megaphone'),
+//
+//                    Action::make('supplier')
+//                        ->label('Fornecedores')
+//                        ->icon('heroicon-o-truck'),
+//
+//                    Action::make('spending')
+//                        ->label('Investimentos')
+//                        ->icon('heroicon-o-banknotes'),
+//
+//                    Action::make('publicSession')
+//                        ->label('Sessões Públicas')
+//                        ->icon('heroicon-o-user-group'),
 
                     DeleteAction::make()->label('Deletar'),
                 ]),
