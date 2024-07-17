@@ -2,7 +2,7 @@
 
 <div class="flex flex-row">
     <div class="flex flex-row">
-        <div class="p-4 grow bg-blue-200">
+        <div class="p-4 grow">
             <div class="grid p-4 mb-4 rounded-lg bg-gray-50 dark:bg-gray-800 grid-cols-6 overflow-hidden">
                 <div class="col-span-5 gap-3">
                     <h1 class="text-3xl font-bold mb-5">Bem vindo ao transparencia.ppg</h1>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="py-4 px-12 grow min-w-[24rem] border-l bg-red-200">
+        <div class="py-4 px-12 grow min-w-[24rem] border-l  bg-gray-50">
             <h1>Teste</h1>
         </div>
     </div>

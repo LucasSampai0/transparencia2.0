@@ -58,7 +58,7 @@
                     </aside>
                 </div>
                 <div class="sm:ml-64  min-h-screen">
-                    <div class="grid rounded-lg dark:border-gray-700">
+                    <div class="grid rounded-lg dark:border-gray-700 "  >
                         <div class="flex items-center justify-start gap-4 p-4 border-b bg-gray-50 dark:bg-gray-800">
                             <div>
                                 <a href="{{$client->slug}}">
