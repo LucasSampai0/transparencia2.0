@@ -58,7 +58,7 @@ class MeansRelationManager extends RelationManager
 
                 Section::make('Documentos')
                     ->schema([
-                        Repeater::make('Documento')
+                        Repeater::make('file')
                             ->relationship('meanAttachments')
                             ->hiddenLabel()
                             ->schema([
@@ -67,6 +67,7 @@ class MeansRelationManager extends RelationManager
                                     ->label('Título'),
                                 FileUpload::make('file')
                                     ->required()
+                                    ->disk('attachments')
                                     ->label('Anexo'),
                             ])->columns(2)
                             ->collapsed()
