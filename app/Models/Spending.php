@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,11 @@ class Spending extends Model
         'supplier_id',
         'type'
     ];
+
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 
     public function category()
     {

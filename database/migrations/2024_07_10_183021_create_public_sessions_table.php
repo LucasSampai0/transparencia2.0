@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('public_sessions', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->longText('description');
             $table->date('date');
             $table->time('time');
             $table->foreignId('client_id')->constrained()->onDelete('cascade');

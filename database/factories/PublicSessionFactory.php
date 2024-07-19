@@ -18,7 +18,7 @@ class PublicSessionFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => $this->faker->sentence,
+            'description' => $this->faker->text(300),
             'date' => $this->faker->date,
             'time' => $this->faker->time,
             'client_id' => Client::factory(),

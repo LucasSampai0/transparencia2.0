@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ClientResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -24,11 +25,22 @@ class PublicSessionsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Descrição')
-                    ->columnSpanFull(),
+                MarkdownEditor::make('description')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'heading',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'table',
+                        'undo',
+                    ])
+                ->label('Descrição')
+                ->columnSpanFull(),
                 Forms\Components\DatePicker::make('date')
                     ->required()
                     ->label('Data'),
@@ -49,7 +61,7 @@ class PublicSessionsRelationManager extends RelationManager
         return $table
             ->recordTitle('Sessão Pública')
             ->columns([
-                TextColumn::make('description')->label('Descrição')->searchable(),
+                TextColumn::make('description')->label('Descrição')->searchable()->wrap()->limit(75),
                 TextColumn::make('date')->label('Data')->searchable(),
                 TextColumn::make('time')->label('Hora')->toggleable()->time('H:i'),
                 TextColumn::make('attachment')

@@ -14,7 +14,7 @@
     <div x-on:click="show = false" class="fixed inset-0 bg-black opacity-50"></div>
     {{--  Modal  --}}
     <div
-        class="mx-auto bg-white rounded-lg m-auto inset-x-0 fixed max-w-lg border border-1"
+        class="mx-auto bg-white rounded-lg m-auto inset-x-0 fixed border border-1"
         x-show="show"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 transform scale-90"

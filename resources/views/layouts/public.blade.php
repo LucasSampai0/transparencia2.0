@@ -62,7 +62,7 @@
             <div class="class= flex flex-col rounded-lg dark:border-gray-700 min-h-screen">
                 <div class="flex items-center justify-start gap-4 p-4 border-b bg-gray-50 dark:bg-gray-800 shadow-md z-10">
                     <div>
-                        <a href="{{$client->slug}}">
+                        <a href=" /{{$client->slug}} ">
                             <img class="w-32 h-32 rounded-full " src="{{ Storage::disk('logos')->url($client->logo) }}" alt="{{$client->name}}">
                         </a>
                     </div>

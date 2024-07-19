@@ -8,8 +8,6 @@ use App\Models\Mean;
 use App\Models\MeanAttachment;
 use App\Models\PublicSession;
 use App\Models\Spending;
-use App\Models\SpendingMean;
-use App\Models\SpendingSupplier;
 use App\Models\Supplier;
 use App\Models\SupplierAttachment;
 use App\Models\User;
@@ -25,32 +23,34 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-//        User::factory()->create([
-//            'name' => 'Lucas | Arkus',
-//            'email' => 'lucas.bueno@arkus.com.br',
-//            'password' => '@Rkus142536',
-//        ]);
+        User::factory()->create([
+            'name' => 'Lucas | Arkus',
+            'email' => 'lucas.bueno@arkus.com.br',
+            'password' => '@Rkus142536',
+        ]);
 
         Client::factory(1)->create();
 
         Category::factory(5)->create();
 
-        Client::all()->each(function ($client) {
-            PublicSession::factory(3)->create(['client_id' => $client->id]);
-            Mean::factory(3)->create(['client_id' => $client->id]);
-            Supplier::factory(3)->create(['client_id' => $client->id]);
-            Spending::factory(5)->create(['client_id' => $client->id, 'type' => 'spending_mean']);
-            Spending::factory(5)->create(['client_id' => $client->id, 'type' => 'spending_supplier']);
+        $clients = Client::all();
+
+        $clients->each(function ($client) {
+            PublicSession::factory(15)->create(['client_id' => $client->id]);
+            $means = Mean::factory(15)->create(['client_id' => $client->id]);
+            $suppliers = Supplier::factory(15)->create(['client_id' => $client->id]);
+            Spending::factory(15)->create(['client_id' => $client->id, 'type' => 'spending_mean']);
+            Spending::factory(15)->create(['client_id' => $client->id, 'type' => 'spending_supplier']);
+
+            $means->each(function ($mean) {
+                MeanAttachment::factory(15)->create(['mean_id' => $mean->id]);
+            });
+
+            $suppliers->each(function ($supplier) {
+                SupplierAttachment::factory(15)->create(['supplier_id' => $supplier->id]);
+            });
         });
 
-        //create 5 mean_attachment for each mean avaliabe
-        Mean::all()->each(function ($mean) {
-            MeanAttachment::factory(5)->create(['mean_id' => $mean->id]);
-        });
 
-        //create 5 supplier_attachment for each supplier avaliable
-        Supplier::all()->each(function ($supplier) {
-            SupplierAttachment::factory(5)->create(['supplier_id' => $supplier->id]);
-        });
     }
 }

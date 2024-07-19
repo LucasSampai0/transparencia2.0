@@ -18,3 +18,5 @@ Route::middleware([
 });
     Route::get('{slug}', App\Livewire\Public\Client::class)->name('client.public');
     Route::get('{slug}/veiculos', App\Livewire\Public\Mean::class)->name('client.mean');
+    Route::get('{slug}/fornecedores', App\Livewire\Public\Supplier::class)->name('client.supplier');
+    Route::get('{slug}/sessoes-publicas', App\Livewire\Public\PublicSession::class)->name('client.public-session');

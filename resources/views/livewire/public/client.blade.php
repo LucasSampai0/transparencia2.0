@@ -29,7 +29,7 @@
                         Ver mais
                     </button>
             </a>
-            <a class="group flex flex-col items-center justify-between rounded bg-gray-50 dark:bg-gray-800 rounded-lg pt-8 gap-12 overflow-hidden" href="{{route('client.mean', ['slug' => $client->slug])}}">
+            <a class="group flex flex-col items-center justify-between rounded bg-gray-50 dark:bg-gray-800 rounded-lg pt-8 gap-12 overflow-hidden" href="{{route('client.supplier', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-user-group class="w-32 h-32 text-[#93dd00]"/>
                     <h4 class="text-center text-xl font-bold text-[#3C7034]  px-6">Relação de Fornecedores de Serviços Complementares</h4>
@@ -47,7 +47,7 @@
                         Ver mais
                 </button>
             </a>
-            <a class="group flex flex-col items-center justify-between rounded bg-gray-50 dark:bg-gray-800 rounded-lg pt-8 gap-12 overflow-hidden" href="{{route('client.mean', ['slug' => $client->slug])}}">
+            <a class="group flex flex-col items-center justify-between rounded bg-gray-50 dark:bg-gray-800 rounded-lg pt-8 gap-12 overflow-hidden" href="{{route('client.public-session', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-tv class="w-32 h-32 text-[#93dd00]"/>
                     <h4 class="text-center text-xl font-bold text-[#3C7034]  px-6">Sessão Pública</h4>

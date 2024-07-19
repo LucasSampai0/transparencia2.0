@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class PublicSession extends Model
 {
@@ -16,6 +17,16 @@ class PublicSession extends Model
         'client_id',
         'attachment',
     ];
+
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
+
+    public function getTimeAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i');
+    }
 
     public function client()
     {
