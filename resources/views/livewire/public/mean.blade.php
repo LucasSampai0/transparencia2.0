@@ -8,7 +8,7 @@
             </p>
         </div>
     @endif
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
         @foreach($categories as $category)
             <div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">

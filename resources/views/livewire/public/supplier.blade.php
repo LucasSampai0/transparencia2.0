@@ -8,7 +8,7 @@
             </p>
         </div>
     @else
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
             @foreach($categories as $category)
                 <div>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-lg">
@@ -57,34 +57,39 @@
                             </div>
                         @endif
                     </div>
-                    <x-filament::modal :close-button="true" id="{{$supplier->id}}" width="2xl">
-                        <div class="relative overflow-x-auto overflow-hidden rounded-md">
-                            <table class="w-full text-md text-left text-gray-700">
-                                <tbody>
-                                @if($supplier->supplierAttachments->isEmpty())
-                                    <tr>
-                                        <td class="text-center py-4">
-                                            Nenhum registro encontrado
-                                        </td>
-                                    </tr>
-                                @endif
-
-                                @foreach($supplier->supplierAttachments as $attachment)
-                                    <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="flex">
-                                            <a class="px-6 py-3 w-full" href="{{ asset('storage/attachments/' . $attachment->file) }}" target="_blank">
-                                                {{ $attachment->title }}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </x-filament::modal>
                 </div>
 
             @endforeach
+
         </div>
+        @foreach($categories as $category)
+            @foreach($suppliers[$category->id] as $supplier)
+                <x-filament::modal :close-button="true" id="{{$supplier->id}}" width="2xl">
+                    <div class="relative overflow-x-auto overflow-hidden rounded-md">
+                        <table class="w-full text-md text-left text-gray-700">
+                            <tbody>
+                            @if($supplier->supplierAttachments->isEmpty())
+                                <tr>
+                                    <td class="text-center py-4">
+                                        Nenhum registro encontrado
+                                    </td>
+                                </tr>
+                            @endif
+
+                            @foreach($supplier->supplierAttachments as $attachment)
+                                <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="flex">
+                                        <a class="px-6 py-3 w-full" href="{{ asset('storage/attachments/' . $attachment->file) }}" target="_blank">
+                                            {{ $attachment->title }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </x-filament::modal>
+            @endforeach
+        @endforeach
     @endif
 </div>
