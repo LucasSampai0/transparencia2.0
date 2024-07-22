@@ -5,9 +5,6 @@ use App\Livewire\Admin\Clients\ClientsList;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware([
     'auth:sanctum',
@@ -20,3 +17,4 @@ Route::middleware([
     Route::get('{slug}/veiculos', App\Livewire\Public\Mean::class)->name('client.mean');
     Route::get('{slug}/fornecedores', App\Livewire\Public\Supplier::class)->name('client.supplier');
     Route::get('{slug}/sessoes-publicas', App\Livewire\Public\PublicSession::class)->name('client.public-session');
+    Route::get('{slug}/investimentos', App\Livewire\Public\Spending::class)->name('client.spending');

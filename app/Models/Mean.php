@@ -31,5 +31,10 @@ class Mean extends Model
         return $this->hasMany(MeanAttachment::class);
     }
 
+    public function spending()
+    {
+        return $this->hasMany(Spending::class);
+    }
+
 
 }

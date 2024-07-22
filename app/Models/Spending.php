@@ -39,4 +39,9 @@ class Spending extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function mean()
+    {
+        return $this->belongsTo(Mean::class);
+    }
 }

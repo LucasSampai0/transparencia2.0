@@ -29,7 +29,6 @@ class SpendingsRelationManager extends RelationManager
             ->schema([
                 DatePicker::make('date')
                     ->label('Data')
-                    ->format('Y-m-d')
                     ->required(),
                 Money::make('total')
                     ->label('Total')
@@ -69,7 +68,7 @@ class SpendingsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('supplier.name')->searchable()->label('Fornecedor')->searchable(),
                 Tables\Columns\TextColumn::make('total')->money('BRL'),
-                Tables\Columns\TextColumn::make('date')->label('Data')->date('d-m-Y')->searchable(),
+                Tables\Columns\TextColumn::make('date')->label('Data')->searchable(),
                 Tables\Columns\TextColumn::make('category.name')->searchable()->label('Categoria')->searchable(),
             ])
             ->filters([

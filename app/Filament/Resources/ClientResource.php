@@ -116,8 +116,11 @@ class ClientResource extends Resource
             ->actions([
                 ActionGroup::make([
 
-                    ViewAction::make()->label('Visualizar'),
-
+                    ViewAction::make()
+                        ->label('Visualizar')
+                        ->url(function ($record) {
+                            return url("{$record->slug}");
+                        }),
                     EditAction::make()->label('Editar'),
 
 //                    Action::make('mean')

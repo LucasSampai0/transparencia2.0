@@ -26,7 +26,7 @@ class Supplier extends Component
 
     public function render()
     {
-        $means = [];
+        $suppliers = [];
         foreach ($this->categories as $category) {
             $suppliers[$category->id] = $this->client->suppliers()->whereHas('category', function ($query) use ($category) {
                 $query->where('id', $category->id);

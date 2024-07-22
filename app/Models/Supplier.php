@@ -31,4 +31,15 @@ class Supplier extends Model
         return $this->hasMany(SupplierAttachment::class);
     }
 
+    public function spendings()
+    {
+        return $this->hasMany(Spending::class);
+    }
+
+    public function getTotalSpendingAttribute()
+    {
+        return $this->spendings->sum('total');
+    }
+
+
 }
