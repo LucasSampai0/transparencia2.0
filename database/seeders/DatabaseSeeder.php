@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Lucas | Arkus',
             'email' => 'lucas.bueno@arkus.com.br',
             'password' => '@Rkus142536',
+            'is_admin' => true
         ]);
 
         Client::factory(1)->create();
