@@ -33,5 +33,10 @@ class PublicSession extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function onlineProposals()
+    {
+        return $this->hasMany(OnlineProposal::class);
+    }
+
 
 }

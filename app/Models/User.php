@@ -26,7 +26,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->is_admin;
+        return true;
     }
     /**
      * The attributes that are mass assignable.
@@ -34,6 +34,7 @@ class User extends Authenticatable implements FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
+        'client_id', // 'client_id' => 'required|exists:clients,id',
         'name',
         'email',
         'password',
@@ -78,9 +79,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return true;
     }
-//
-//    public function isClient()
-//    {
-//        return $this->role === self::ROLE_CLIENT;
-//    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

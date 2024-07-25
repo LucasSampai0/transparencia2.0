@@ -21,9 +21,6 @@ class ListUsers extends ListRecords
     public function getTabs(): array
     {
         return [
-            'Admin' => Tab::make('ADM', 'users')->query(function (Builder $query) {
-                $query->where('is_admin', '1');
-            }),
             'Suppliers' => Tab::make('Clientes', 'users')->query(function (Builder $query) {
                 $query->where('is_admin', '0');
             }),

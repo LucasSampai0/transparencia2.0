@@ -16,8 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = User::class
-    ;
+    protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -27,6 +26,10 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('client_id')
+                    ->options(\App\Models\Client::all()->pluck('name', 'id'))
+                    ->preload()
+                    ->searchable(),
                 Forms\Components\TextInput::make('name')
                     ->label('Nome')
                     ->required(),
@@ -45,8 +48,8 @@ class UserResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-
             ->columns([
+                Tables\Columns\TextColumn::make('client.name'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
@@ -73,7 +76,6 @@ class UserResource extends Resource
             //
         ];
     }
-
 
 
     public static function getPages(): array

@@ -14,9 +14,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'Usuário 2',
-            'email' => 'sandro.oliveira@arkus.com.br',
-            'password' => 'password',
+            'name' => 'Admin',
+            'email' => 'lucas.bueno@arkus.com.br',
+            'password' => '@Rkus142536',
             'is_admin' => true
         ]);
     }

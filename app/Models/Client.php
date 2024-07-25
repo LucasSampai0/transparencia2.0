@@ -46,4 +46,9 @@ class Client extends Model
         return $this->hasMany(Spending::class);
     }
 
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }
