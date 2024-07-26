@@ -9,6 +9,10 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\Layout\Panel;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -16,6 +20,17 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class OnlineProposalResource extends Resource
 {
     protected static ?string $model = OnlineProposal::class;
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        if (!auth()->user()->is_admin) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -59,7 +74,45 @@ class OnlineProposalResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Panel::make([
+                    Split::make([
+                        Stack::make([
+                            Tables\Columns\TextColumn::make('company_name')->prefix('Empresa: '),
+                            Tables\Columns\TextColumn::make('company_cnpj')->prefix('CNPJ: '),
+                            Tables\Columns\TextColumn::make('company_IE')->prefix('IE: '),
+                            Tables\Columns\TextColumn::make('company_IM')->prefix('IM: '),
+                            Tables\Columns\TextColumn::make('company_address')->prefix('Endereço: '),
+                            Tables\Columns\TextColumn::make('company_neighborhood')->prefix('Bairro: '),
+                            Tables\Columns\TextColumn::make('company_number')->prefix('Número: '),
+                            Tables\Columns\TextColumn::make('company_state')->prefix('Estado: '),
+                            Tables\Columns\TextColumn::make('company_city')->prefix('Cidade: '),
+                        ]),
+                        Stack::make([
+                            Tables\Columns\TextColumn::make('bank_code')->prefix('Código do Banco: '),
+                            Tables\Columns\TextColumn::make('bank_agency')->prefix('Agência: '),
+                            Tables\Columns\TextColumn::make('bank_account')->prefix('Conta: '),
+                        ]),
+                        Stack::make([
+                            Tables\Columns\TextColumn::make('legal_representative_name')->prefix('Representante Legal: '),
+                            Tables\Columns\TextColumn::make('legal_representative_cpf')->prefix('CPF: '),
+                            Tables\Columns\TextColumn::make('legal_representative_email')->prefix('Email: '),
+                            Tables\Columns\TextColumn::make('legal_representative_phone')->prefix('Telefone: '),
+                        ]),
+                        Stack::make([
+                            Tables\Columns\TextColumn::make('proposal_description')->prefix('Descrição da Proposta: '),
+                            Tables\Columns\TextColumn::make('proposal_value')->prefix('Valor da Proposta: '),
+                            Tables\Columns\TextColumn::make('proposal_expiry_date')->prefix('Validade da Proposta: '),
+                            Tables\Columns\TextColumn::make('proposal_signed_attachment')
+                                ->label('Anexo')
+                                ->icon('heroicon-o-paper-clip')
+                                ->formatStateUsing(fn($state) => $state ? 'Ver Anexo' : 'Sem Anexo')
+                                ->url(fn($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment) : null)
+                                ->openUrlInNewTab()
+                        ]),
+                    ])
+                ])->collapsible(),
+                Tables\Columns\TextColumn::make('company_name')->label('Empresa'),
+
             ])
             ->filters([
                 //

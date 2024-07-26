@@ -18,10 +18,11 @@ class PublicSession extends Model
         'attachment',
     ];
 
-    public function getDateAttribute($value)
+    public function setDateAttribute($value)
     {
-        return Carbon::parse($value)->format('d/m/Y');
+        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
+
 
     public function getTimeAttribute($value)
     {

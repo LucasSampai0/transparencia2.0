@@ -16,4 +16,5 @@ class ListPublicSessions extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
 }

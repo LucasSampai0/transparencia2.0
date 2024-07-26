@@ -13,7 +13,7 @@ class OnlineProposalPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->is_admin;
+        return true;
     }
 
     /**

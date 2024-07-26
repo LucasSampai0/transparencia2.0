@@ -10,6 +10,8 @@ class EditPublicSession extends EditRecord
 {
     protected static string $resource = PublicSessionResource::class;
 
+
+
     protected function getHeaderActions(): array
     {
         return [

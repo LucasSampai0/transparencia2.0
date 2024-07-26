@@ -24,6 +24,10 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+        if (env(key: 'APP_ENV') !== 'local') {
+            URL::forceScheme(scheme: 'https');
+        }
     }
 
     /**

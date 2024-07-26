@@ -91,7 +91,7 @@ class ClientResource extends Resource
                                     ->prefix('Site')
                                     ->hiddenLabel(),
                             ])->columnSpan(5)
-                    ])
+                    ]),
             ]);
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\Response;
 
 class PublicSessionPolicy
 {
+
     /**
      * Determine whether the user can view any models.
      */

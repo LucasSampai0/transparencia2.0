@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\ClientResource\Pages;
 
 use App\Filament\Resources\ClientResource;
+use App\Filament\Resources\PublicSessionResource\Widgets\OnlineProposalWidget;
+use App\Models\PublicSession;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
@@ -16,4 +18,5 @@ class EditClient extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+    
 }

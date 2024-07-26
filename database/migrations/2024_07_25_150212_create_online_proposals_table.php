@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('online_proposals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained();
-            $table->foreignId('public_session_id')->constrained();
+            $table->foreignId('client_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('public_session_id')->constrained()->cascadeOnDelete();
             $table->string('company_name');
             $table->string('company_cnpj');
             $table->string('company_IE');

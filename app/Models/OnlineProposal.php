@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Filament\Resources\PublicSessionResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,6 +36,11 @@ class OnlineProposal extends Model
     ];
 
     public function publicSession()
+    {
+        return $this->belongsTo(PublicSession::class);
+    }
+
+    public function client()
     {
         return $this->belongsTo(Client::class);
     }

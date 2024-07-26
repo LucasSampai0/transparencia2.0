@@ -16,4 +16,10 @@ class ViewPublicSession extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
+    protected function getFooterWidgets(): array
+    {
+        return [
+            PublicSessionResource\Widgets\OnlineProposalWidget::class,
+        ];
+    }
 }

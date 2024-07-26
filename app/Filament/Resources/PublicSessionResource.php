@@ -8,6 +8,7 @@ use App\Models\PublicSession;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Entry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
@@ -18,6 +19,7 @@ use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class PublicSessionResource extends Resource
@@ -25,6 +27,16 @@ class PublicSessionResource extends Resource
     protected static ?string $model = PublicSession::class;
 
     protected static ?string $modelLabel = 'Sessão Pública';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        if (!auth()->user()->is_admin) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -55,16 +67,16 @@ class PublicSessionResource extends Resource
             ])
             ->filters([
 
-            ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
+//            ->actions([
+//                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\EditAction::make(),
+//            ])
+//            ->bulkActions([
+//                Tables\Actions\BulkActionGroup::make([
+//                    Tables\Actions\DeleteBulkAction::make(),
+//                ]),
+//            ]);
 
     }
 
@@ -73,7 +85,9 @@ class PublicSessionResource extends Resource
         return $infolist->schema([
             Section::make([
                 TextEntry::make('description')->label('Descrição')->columnSpanFull(),
-                TextEntry::make('date')->label('Data')->columnSpan(1),
+                TextEntry::make('date')->label('Data')
+                    ->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y'))
+                    ->columnSpan(1),
                 TextEntry::make('time')->label('Hora')->columnSpan(1)
             ])->columns(2)
         ]);
@@ -90,9 +104,16 @@ class PublicSessionResource extends Resource
     {
         return [
             'index' => Pages\ListPublicSessions::route('/'),
-            'create' => Pages\CreatePublicSession::route('/create'),
+//            'create' => Pages\CreatePublicSession::route('/create'),
             'view' => Pages\ViewPublicSession::route('/{record}'),
-            'edit' => Pages\EditPublicSession::route('/{record}/edit'),
+//            'edit' => Pages\EditPublicSession::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            PublicSessionResource\Widgets\OnlineProposalWidget::class
         ];
     }
 }
