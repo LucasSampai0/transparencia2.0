@@ -38,35 +38,49 @@ class OnlineProposalResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('client_id')
-                    ->options(\App\Models\Client::all()->pluck('name', 'id')->toArray())
-                    ->required()
-                    ->label('Cliente'),
-                Forms\Components\Select::make('public_session_id')
-                    ->options(\App\Models\PublicSession::all()->pluck('description', 'id')->toArray())
-                    ->required()
-                    ->label('Sessão Pública'),
-                Forms\Components\Textarea::make('company_name'),
-                Forms\Components\Textarea::make('company_cnpj'),
-                Forms\Components\Textarea::make('company_IE'),
-                Forms\Components\Textarea::make('company_IM'),
-                Forms\Components\Textarea::make('company_address'),
-                Forms\Components\Textarea::make('company_neighborhood'),
-                Forms\Components\Textarea::make('company_number'),
-                Forms\Components\Textarea::make('company_state'),
-                Forms\Components\Textarea::make('company_city'),
-                Forms\Components\Textarea::make('bank_code'),
-                Forms\Components\Textarea::make('bank_agency'),
-                Forms\Components\Textarea::make('bank_account'),
-                Forms\Components\Textarea::make('legal_representative_name'),
-                Forms\Components\Textarea::make('legal_representative_cpf'),
-                Forms\Components\Textarea::make('legal_representative_email'),
-                Forms\Components\Textarea::make('legal_representative_phone'),
-                Forms\Components\Textarea::make('proposal_description'),
-                Forms\Components\Textarea::make('proposal_value'),
-                Forms\Components\DatePicker::make('proposal_expiry_date'),
-                Forms\Components\FileUpload::make('proposal_signed_attachment'),
-
+                Forms\Components\Wizard::make([
+                    Forms\Components\Wizard\Step::make('Empresa')
+                        ->schema([
+                            Forms\Components\Select::make('client_id')
+                                ->options(\App\Models\Client::all()->pluck('name', 'id')->toArray())
+                                ->required()
+                                ->label('Cliente'),
+                            Forms\Components\Select::make('public_session_id')
+                                ->options(\App\Models\PublicSession::all()->pluck('description', 'id')->toArray())
+                                ->required()
+                                ->label('Sessão Pública'),
+                            Forms\Components\Textarea::make('company_name'),
+                            Forms\Components\Textarea::make('company_cnpj'),
+                            Forms\Components\Textarea::make('company_IE'),
+                            Forms\Components\Textarea::make('company_IM'),
+                            Forms\Components\Textarea::make('company_address'),
+                            Forms\Components\Textarea::make('company_neighborhood'),
+                            Forms\Components\Textarea::make('company_number'),
+                            Forms\Components\Textarea::make('company_state'),
+                            Forms\Components\Textarea::make('company_city'),
+                    ]),
+                    Forms\Components\Wizard\Step::make('Faturamento')
+                        ->schema([
+                            Forms\Components\Textarea::make('bank_code'),
+                            Forms\Components\Textarea::make('bank_agency'),
+                            Forms\Components\Textarea::make('bank_account'),
+                        ]),
+                    Forms\Components\Wizard\Step::make('Representante Legal')
+                    ->schema([
+                            Forms\Components\Textarea::make('legal_representative_name'),
+                            Forms\Components\Textarea::make('legal_representative_cpf'),
+                            Forms\Components\Textarea::make('legal_representative_email'),
+                            Forms\Components\Textarea::make('legal_representative_phone'),
+                        ]),
+                    Forms\Components\Wizard\Step::make('Proposta')
+                    ->schema([
+                        Forms\Components\Textarea::make('proposal_description'),
+                        Forms\Components\Textarea::make('proposal_value'),
+                        Forms\Components\DatePicker::make('proposal_expiry_date'),
+                        Forms\Components\FileUpload::make('proposal_signed_attachment'),
+                    ]),
+                ])
+                ->columnSpanFull(),
             ]);
     }
 

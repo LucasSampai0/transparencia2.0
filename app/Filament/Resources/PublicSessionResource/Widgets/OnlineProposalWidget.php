@@ -51,18 +51,6 @@ class OnlineProposalWidget extends BaseWidget
                                 Tables\Columns\TextColumn::make('company_IE')->prefix('IE: '),
                                 Tables\Columns\TextColumn::make('company_IM')->prefix('IM: '),
                             ]),
-//                            Stack::make([
-//                                Tables\Columns\TextColumn::make('company_address')->prefix('Endereço: '),
-//                                Tables\Columns\TextColumn::make('company_neighborhood')->prefix('Bairro: '),
-//                                Tables\Columns\TextColumn::make('company_number')->prefix('Número: '),
-//                                Tables\Columns\TextColumn::make('company_state')->prefix('Estado: '),
-//                                Tables\Columns\TextColumn::make('company_city')->prefix('Cidade: '),
-//                            ]),
-//                            Stack::make([
-//                                Tables\Columns\TextColumn::make('bank_code')->prefix('Código do Banco: '),
-//                                Tables\Columns\TextColumn::make('bank_agency')->prefix('Agência: '),
-//                                Tables\Columns\TextColumn::make('bank_account')->prefix('Conta: '),
-//                            ]),
                             Stack::make([
                                 Tables\Columns\TextColumn::make('legal_representative_cpf')->prefix('CPF: '),
                                 Tables\Columns\TextColumn::make('legal_representative_email')->prefix('Email: '),

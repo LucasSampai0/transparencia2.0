@@ -85,6 +85,7 @@
                     </div>
                 </div>
             </x-filament::modal>
+            @livewire('online-proposal-form', ['client_id' => $this->client->id, 'public_session_id' => $publicSession->id])
         @endforeach
 
     @endif
