@@ -49,9 +49,9 @@ class PublicSessionsRelationManager extends RelationManager
                     ->columnSpanFull(),
                 Forms\Components\DatePicker::make('date')
                     ->required()
-                    ->label('Data')
-                    ->format('d/m/Y')
-                    ->formatStateUsing(fn($state) => Carbon::parse($state)->format('d/m/Y')),
+                    ->label('Data'),
+//                    ->format('d/m/Y')
+//                    ->formatStateUsing(fn($state) => Carbon::parse($state)->format('d/m/Y')),
                 Forms\Components\TimePicker::make('time')
                     ->required()
                     ->time('H:i')

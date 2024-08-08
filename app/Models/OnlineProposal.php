@@ -17,6 +17,7 @@ class OnlineProposal extends Model
         'company_cnpj',
         'company_IE',
         'company_IM',
+        'company_zipcode',
         'company_address',
         'company_neighborhood',
         'company_number',

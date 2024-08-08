@@ -3,125 +3,122 @@
 namespace App\Livewire;
 
 use App\Models\Client;
-use App\Models\Client as ClientModel;
 use App\Models\OnlineProposal;
 use App\Models\PublicSession;
-use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
-use Filament\Tables\Table;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\HtmlString;
 use Livewire\Component;
 use Filament\Forms;
 use Filament\Forms\Form;
-use function SebastianBergmann\CodeCoverage\TestFixture\g;
+use Livewire\WithFileUploads;
 
-class OnlineProposalForm extends Component implements hasForms
+class OnlineProposalForm extends Component
 {
 
-    use Forms\Concerns\InteractsWithForms;
+    use WithFileUploads;
 
-    public $data = [];
-    public $client_id;
-    public $public_session_id;
-    public ?array $attachment;
+    public $client;
+    public $publicSession;
+    public $company_name;
+    public $company_cnpj;
+
+    public $company_IE;
+    public $company_IM;
+    public $company_zipcode;
+    public $company_address;
+    public $company_neighborhood;
+    public $company_number;
+    public $company_state;
+    public $company_city;
+    public $bank_code;
+    public $bank_agency;
+    public $bank_account;
+    public $legal_representative_name;
+    public $legal_representative_cpf;
+    public $legal_representative_email;
+    public $legal_representative_phone;
+    public $proposal_description;
+    public $proposal_value;
+    public $proposal_expiry_date;
+    public $proposal_signed_attachment;
 
     public function mount($client_id, $public_session_id)
     {
-        $this->client_id = $client_id;
-        $this->public_session_id = $public_session_id;
+        $this->client = Client::find($client_id);
+        $this->publicSession = PublicSession::find($public_session_id);
     }
 
 
-
-    public static function form(Form $form): Form
+    public function store()
     {
-        return $form
-            ->schema([
-                Forms\Components\Wizard::make([
-                    Forms\Components\Wizard\Step::make('Empresa')
-                        ->schema([
-                            Forms\Components\TextInput::make('company_name'),
-                            Forms\Components\TextInput::make('company_cnpj'),
-                            Forms\Components\TextInput::make('company_IE'),
-                            Forms\Components\TextInput::make('company_IM'),
-                            Forms\Components\TextInput::make('company_address'),
-                            Forms\Components\TextInput::make('company_neighborhood'),
-                            Forms\Components\TextInput::make('company_number'),
-                            Forms\Components\TextInput::make('company_state'),
-                            Forms\Components\TextInput::make('company_city'),
-                        ])->columns(2),
-                    Forms\Components\Wizard\Step::make('Faturamento')
-                        ->schema([
-                            Forms\Components\TextInput::make('bank_code'),
-                            Forms\Components\TextInput::make('bank_agency'),
-                            Forms\Components\TextInput::make('bank_account'),
-                        ]),
-                    Forms\Components\Wizard\Step::make('Representante Legal')
-                        ->schema([
-                            Forms\Components\TextInput::make('legal_representative_name'),
-                            Forms\Components\TextInput::make('legal_representative_cpf'),
-                            Forms\Components\TextInput::make('legal_representative_email'),
-                            Forms\Components\TextInput::make('legal_representative_phone'),
-                        ]),
-                    Forms\Components\Wizard\Step::make('Proposta')
-                        ->schema([
-                            Forms\Components\TextInput::make('proposal_description'),
-                            Forms\Components\TextInput::make('proposal_value'),
-                            Forms\Components\DatePicker::make('proposal_expiry_date'),
-                            Forms\Components\FileUpload::make('proposal_signed_attachment'),
-                        ]),
-                ])
-                    ->columnSpanFull(),
-            ]);
-    }
 
+        $this->mount($this->client->id, $this->publicSession->id);
 
-
-    public function create()
-    {
-        $data = $this->form->getState();
-        $data['client_id'] = $this->client_id;
-        $data['public_session_id'] = $this->public_session_id;
-
-        OnlineProposal::create([
-            "client_id" => $data['client_id'],
-            "public_session_id" => $data['public_session_id'],
-            "company_name" => $data['company_name'],
-            "company_cnpj" => $data['company_cnpj'],
-            "company_IE" => $data['company_IE'],
-            "company_IM" => $data['company_IM'],
-            "company_address" => $data['company_address'],
-            "company_neighborhood" => $data['company_neighborhood'],
-            "company_number" => $data['company_number'],
-            "company_state" => $data['company_state'],
-            "company_city" => $data['company_city'],
-            "bank_code" => $data['bank_code'] ?? null,
-            "bank_agency" => $data['bank_agency'] ?? null,
-            "bank_account" => $data['bank_account'] ?? null,
-            "legal_representative_name" => $data['legal_representative_name'] ?? null,
-            "legal_representative_cpf" => $data['legal_representative_cpf'] ?? null,
-            "legal_representative_email" => $data['legal_representative_email'] ?? null,
-            "legal_representative_phone" => $data['legal_representative_phone'] ?? null,
-            "proposal_description" => $data['proposal_description'] ?? null,
-            "proposal_value" => $data['proposal_value'] ?? null,
-            "proposal_expiry_date" => $data['proposal_expiry_date'] ?? null,
-            "proposal_signed_attachment" => $data['proposal_signed_attachment'],
+        $this->validate([
+            'company_name' => 'required|min:3|max:255',
+            'company_cnpj' => 'required',
+            'company_IE' => 'required',
+            'company_IM' => 'required',
+            'company_address' => 'required',
+            'company_zipcode' => 'required',
+            'company_neighborhood' => 'required',
+            'company_number' => 'required',
+            'company_state' => 'required',
+            'company_city' => 'required',
+            'bank_code' => 'required',
+            'bank_agency' => 'required',
+            'bank_account' => 'required',
+            'legal_representative_name' => 'required',
+            'legal_representative_cpf' => 'required',
+            'legal_representative_email' => 'required',
+            'legal_representative_phone' => 'required',
+            'proposal_description' => 'required',
+            'proposal_value' => 'required',
+            'proposal_expiry_date' => 'required',
+            'proposal_signed_attachment' => 'required|file|mimes:pdf'
         ]);
 
+        OnlineProposal::create([
+            'client_id' => $this->client->id,
+            'public_session_id' => $this->publicSession->id,
+            'company_name' => $this->company_name,
+            'company_cnpj' => $this->company_cnpj,
+            'company_IE' => $this->company_IE,
+            'company_IM' => $this->company_IM,
+            'company_address' => $this->company_address,
+            'company_zipcode' => $this->company_zipcode,
+            'company_neighborhood' => $this->company_neighborhood,
+            'company_number' => $this->company_number,
+            'company_state' => $this->company_state,
+            'company_city' => $this->company_city,
+            'bank_code' => $this->bank_code,
+            'bank_agency' => $this->bank_agency,
+            'bank_account' => $this->bank_account,
+            'legal_representative_name' => $this->legal_representative_name,
+            'legal_representative_cpf' => $this->legal_representative_cpf,
+            'legal_representative_email' => $this->legal_representative_email,
+            'legal_representative_phone' => $this->legal_representative_phone,
+            'proposal_description' => $this->proposal_description,
+            'proposal_value' => $this->proposal_value,
+            'proposal_expiry_date' => $this->proposal_expiry_date,
+            'proposal_signed_attachment' => $this->proposal_signed_attachment->store('attachments', 'public')
+        ]);
+
+
         Notification::make()
+            ->title('Nova Proposta')
             ->success()
-            ->title('Proposta enviada com sucesso!')
-            ->seconds(5)
+            ->body('Nova proposta recebida.')
             ->send();
+
+        session()->flash('success', 'Nova proposta recebida com sucesso.');
+
+        return redirect()->route('client.public-session', ['slug' => $this->client->slug]);
     }
 
 
     public function render()
     {
-        return view('livewire.online-proposal-form', [
-            'form' => $this->form,
-        ]);
+        return view('livewire.online-proposal-form');
     }
 }

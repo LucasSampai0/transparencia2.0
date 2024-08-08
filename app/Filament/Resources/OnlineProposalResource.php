@@ -16,6 +16,7 @@ use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Carbon;
 
 class OnlineProposalResource extends Resource
 {
@@ -23,12 +24,7 @@ class OnlineProposalResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        if (!auth()->user()->is_admin) {
-            return false;
-        }
-        else{
-            return true;
-        }
+        return false;
     }
 
 
@@ -76,7 +72,7 @@ class OnlineProposalResource extends Resource
                     ->schema([
                         Forms\Components\Textarea::make('proposal_description'),
                         Forms\Components\Textarea::make('proposal_value'),
-                        Forms\Components\DatePicker::make('proposal_expiry_date'),
+                        Forms\Components\DatePicker::make('proposal_expiry_date')->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y')),
                         Forms\Components\FileUpload::make('proposal_signed_attachment'),
                     ]),
                 ])

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('company_cnpj');
             $table->string('company_IE');
             $table->string('company_IM');
+            $table->string('company_zipcode');
             $table->string('company_address');
             $table->string('company_neighborhood');
             $table->string('company_number');

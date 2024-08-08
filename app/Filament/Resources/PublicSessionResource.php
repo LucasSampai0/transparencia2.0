@@ -55,7 +55,9 @@ class PublicSessionResource extends Resource
             ->modifyQueryUsing(fn (Builder $query) => $query->where('client_id', auth()->user()->client_id))
             ->columns([
                 TextColumn::make('description')->label('Descrição')->searchable()->wrap()->limit(75),
-                TextColumn::make('date')->label('Data')->searchable(),
+                TextColumn::make('date')->label('Data')->searchable()
+                ->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y'))
+                ,
                 TextColumn::make('time')->label('Hora')->toggleable()->time('H:i'),
                 TextColumn::make('attachment')
                     ->label('Anexo')

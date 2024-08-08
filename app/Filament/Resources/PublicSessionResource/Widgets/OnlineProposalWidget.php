@@ -4,6 +4,7 @@ namespace App\Filament\Resources\PublicSessionResource\Widgets;
 
 use App\Models\OnlineProposal;
 use App\Models\PublicSession;
+use Carbon\Carbon;
 use Filament\Tables;
 use Filament\Tables\Columns\Layout\Panel;
 use Filament\Tables\Columns\Layout\Split;
@@ -17,20 +18,21 @@ class OnlineProposalWidget extends BaseWidget
 
     protected static ?string $heading = 'Propostas Online';
 
-    public $publicSession;
-
     public ?PublicSession $record = null;
+
+    public PublicSession $publicSession;
     protected int|string|array $columnSpan = 'full';
 
-    public function mount(PublicSession $publicSession)
-    {
-        $this->publicSession = $publicSession;
-    }
 
 
     public function table(Table $table): Table
     {
-        if ($this->publicSession->date < now()->format('d-m-Y')) {
+        $date = Carbon::createFromFormat('d-m-Y', $this->record->date)->startOfDay();
+        $hour = Carbon::createFromFormat('H:i', $this->record->time);
+        $dateNow = Carbon::now()->startOfDay();
+        $hourNow = Carbon::now();
+
+        if($date <= $dateNow && $hour <= $hourNow){
             return $table
                 ->deferLoading()
                 ->striped()
@@ -74,16 +76,16 @@ class OnlineProposalWidget extends BaseWidget
                 ->actions([
                     Tables\Actions\ViewAction::make()
                         ->visible()
-                    ->label('Ver proposta completa'),
+                        ->label('Ver proposta completa'),
                 ]);
-        }
-        else {
+        }else {
             return $table
                 ->query(
                     OnlineProposal::with('publicSession')->where('public_session_id', '=', '-1'),
                 )
                 ->columns([
                 ])->emptyStateHeading('Você verá as propostas online após a data desta sessão pública')
+                ->emptyStateIcon('heroicon-o-information-circle')
                 ->paginated(false)
                 ->actions([
                     Tables\Actions\ViewAction::make()
@@ -92,6 +94,8 @@ class OnlineProposalWidget extends BaseWidget
                         ),
                 ]);
         }
+
+
     }
 
 }
