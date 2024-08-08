@@ -27,6 +27,7 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('client_id')
+                    ->label('Cliente')
                     ->options(\App\Models\Client::all()->pluck('name', 'id'))
                     ->preload()
                     ->searchable(),

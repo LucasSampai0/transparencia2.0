@@ -3,6 +3,10 @@
 namespace App\Filament\Resources\ClientResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -22,20 +26,50 @@ class SupplierRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Nome'),
-                Forms\Components\TextInput::make('cnpj')
-                    ->required()
-                    ->label('CNPJ')
-                    ->mask('99.999.999/9999-99'),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->required()
-                    ->searchable()
-                    ->label('Categoria'),
-            ])->columns(3);
+                Section::make('Informações do Fornecedor')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nome'),
+                        Forms\Components\TextInput::make('cnpj')
+                            ->required()
+                            ->label('CNPJ')
+                            ->mask('99.999.999/9999-99'),
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->required()
+                            ->searchable()
+                            ->label('Categoria'),
+                    ])->columns(3),
+
+
+                Section::make('Documentos')
+                    ->schema([
+                        Repeater::make('file')
+                            ->relationship('supplierAttachments')
+                            ->hiddenLabel()
+                            ->schema([
+                                TextInput::make('title')
+                                    ->required()
+                                    ->label('Título'),
+                                FileUpload::make('file')
+                                    ->required()
+                                    ->disk('attachments')
+                                    ->label('Anexo')
+                            ])->columns(2)
+                            ->collapsed()
+                            ->cloneable()
+                            ->collapsible()
+                            ->itemLabel(
+                                function(array $state): string {
+                                    return $state['title'] ?? 'Anexo sem nome';
+                                }
+                            )
+                            ->defaultItems(0)
+                            ->createItemButtonLabel('Adicionar Documento')
+                    ])->columnSpanFull()
+            ]);
     }
 
     public function table(Table $table): Table
@@ -47,9 +81,7 @@ class SupplierRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('cnpj')->label('CNPJ'),
                 Tables\Columns\TextColumn::make('category.name')->label('Categoria')->searchable(),
             ])
-            ->filters([
-
-            ])
+            ->filters([])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
             ])
@@ -63,5 +95,4 @@ class SupplierRelationManager extends RelationManager
                 ])
             ]);
     }
-
 }

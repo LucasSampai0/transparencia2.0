@@ -101,7 +101,8 @@ class OnlineProposalForm extends Component
             'proposal_description' => $this->proposal_description,
             'proposal_value' => $this->proposal_value,
             'proposal_expiry_date' => $this->proposal_expiry_date,
-            'proposal_signed_attachment' => $this->proposal_signed_attachment->store('attachments', 'public')
+            'proposal_signed_attachment' => $this->proposal_signed_attachment->store('' , 'attachments')
+
         ]);
 
 

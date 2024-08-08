@@ -7,6 +7,8 @@ use App\Filament\Resources\OnlineProposalResource\RelationManagers;
 use App\Models\OnlineProposal;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\Column;
@@ -17,6 +19,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class OnlineProposalResource extends Resource
 {
@@ -121,8 +124,6 @@ class OnlineProposalResource extends Resource
                         ]),
                     ])
                 ])->collapsible(),
-                Tables\Columns\TextColumn::make('company_name')->label('Empresa'),
-
             ])
             ->filters([
                 //
@@ -136,6 +137,7 @@ class OnlineProposalResource extends Resource
                 ]),
             ]);
     }
+
 
     public static function getRelations(): array
     {

@@ -29,6 +29,7 @@ class SpendingsRelationManager extends RelationManager
             ->schema([
                 DatePicker::make('date')
                     ->label('Data')
+                    ->format('d/m/Y')
                     ->required(),
                 Money::make('total')
                     ->label('Total')

@@ -90,8 +90,13 @@ class PublicSessionResource extends Resource
                 TextEntry::make('date')->label('Data')
                     ->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y'))
                     ->columnSpan(1),
-                TextEntry::make('time')->label('Hora')->columnSpan(1)
-            ])->columns(2)
+                TextEntry::make('time')->label('Hora')->columnSpan(1),
+                TextEntry::make('attachment')
+                                                ->label('Edital')
+                                                ->formatStateUsing(fn($state) => $state ? 'Ver Edital' : 'Sem Anexo')
+                                                ->url(fn($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment) : null)
+                                                ->openUrlInNewTab(),
+            ])->columns(3)
         ]);
     }
 
