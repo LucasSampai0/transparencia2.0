@@ -40,6 +40,7 @@ class SupplierRelationManager extends RelationManager
                             ->relationship('category', 'name')
                             ->required()
                             ->searchable()
+                            ->preload()
                             ->label('Categoria'),
                     ])->columns(3),
 
@@ -62,7 +63,7 @@ class SupplierRelationManager extends RelationManager
                             ->cloneable()
                             ->collapsible()
                             ->itemLabel(
-                                function(array $state): string {
+                                function (array $state): string {
                                     return $state['title'] ?? 'Anexo sem nome';
                                 }
                             )

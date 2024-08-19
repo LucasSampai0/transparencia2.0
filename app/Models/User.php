@@ -21,8 +21,8 @@ class User extends Authenticatable implements FilamentUser
     use TwoFactorAuthenticatable;
 
 
-//    const ROLE_CLIENT = 'client';
-//    const ROLE_ADMIN = 'admin';
+    //    const ROLE_CLIENT = 'client';
+    //    const ROLE_ADMIN = 'admin';
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -77,10 +77,9 @@ class User extends Authenticatable implements FilamentUser
 
     public function isAdmin()
     {
-        if($this->is_admin == 1){
+        if ($this->is_admin == 1) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

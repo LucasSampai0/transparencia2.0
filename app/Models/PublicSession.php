@@ -19,10 +19,10 @@ class PublicSession extends Model
     ];
 
 
-//    public function setDateAttribute($value)
-//    {
-//        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-//    }
+    //    public function setDateAttribute($value)
+    //    {
+    //        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    //    }
 
 
     public function getDateAttribute($value)
@@ -45,6 +45,4 @@ class PublicSession extends Model
     {
         return $this->hasMany(OnlineProposal::class);
     }
-
-
 }

@@ -16,15 +16,16 @@ class Spending extends Model
         'total',
         'category_id',
         'client_id',
+        'type',
         'supplier_id',
-        'type'
+        'mean_id',
     ];
 
     public function getDateAttribute($value)
     {
         return Carbon::parse($value)->format('d/m/Y');
     }
-    
+
     public function setDateAttribute($value)
     {
         $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
@@ -40,13 +41,13 @@ class Spending extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function supplier()
-    {
-        return $this->belongsTo(Supplier::class);
-    }
-
     public function mean()
     {
         return $this->belongsTo(Mean::class);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
     }
 }

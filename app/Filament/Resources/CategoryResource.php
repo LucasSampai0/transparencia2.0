@@ -11,6 +11,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
@@ -31,7 +32,7 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-               TextInput::make('name')->label('Categoria'),
+                TextInput::make('name')->label('Categoria'),
             ]);
     }
 
@@ -42,14 +43,16 @@ class CategoryResource extends Resource
                 TextColumn::make('name')->label('Categoria')->searchable(),
             ])
             ->filters([
-                //
+                
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make(),
+
             ])
             ->bulkActions([
                 BulkActionGroup::make([
-                   DeleteBulkAction::make(),
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -57,7 +60,7 @@ class CategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
 

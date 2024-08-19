@@ -32,8 +32,7 @@ class PublicSessionResource extends Resource
     {
         if (!auth()->user()->is_admin) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -52,33 +51,30 @@ class PublicSessionResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $query) => $query->where('client_id', auth()->user()->client_id))
+            ->modifyQueryUsing(fn(Builder $query) => $query->where('client_id', auth()->user()->client_id))
             ->columns([
                 TextColumn::make('description')->label('Descrição')->searchable()->wrap()->limit(75),
                 TextColumn::make('date')->label('Data')->searchable()
-                ->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y'))
-                ,
+                    ->formatStateUsing(fn($state) => Carbon::parse($state)->format('d/m/Y')),
                 TextColumn::make('time')->label('Hora')->toggleable()->time('H:i'),
                 TextColumn::make('attachment')
                     ->label('Anexo')
                     ->toggleable()
                     ->icon('heroicon-o-paper-clip')
-                    ->formatStateUsing(fn ($state) => $state ? 'Ver Anexo' : 'Sem Anexo')
-                    ->url(fn ($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment) : null)
+                    ->formatStateUsing(fn($state) => $state ? 'Ver Anexo' : 'Sem Anexo')
+                    ->url(fn($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment) : null)
                     ->openUrlInNewTab()
             ])
-            ->filters([
-
-            ]);
-//            ->actions([
-//                Tables\Actions\ViewAction::make(),
-//                Tables\Actions\EditAction::make(),
-//            ])
-//            ->bulkActions([
-//                Tables\Actions\BulkActionGroup::make([
-//                    Tables\Actions\DeleteBulkAction::make(),
-//                ]),
-//            ]);
+            ->filters([]);
+        //            ->actions([
+        //                Tables\Actions\ViewAction::make(),
+        //                Tables\Actions\EditAction::make(),
+        //            ])
+        //            ->bulkActions([
+        //                Tables\Actions\BulkActionGroup::make([
+        //                    Tables\Actions\DeleteBulkAction::make(),
+        //                ]),
+        //            ]);
 
     }
 
@@ -88,14 +84,14 @@ class PublicSessionResource extends Resource
             Section::make([
                 TextEntry::make('description')->label('Descrição')->columnSpanFull(),
                 TextEntry::make('date')->label('Data')
-                    ->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y'))
+                    ->formatStateUsing(fn($state) => Carbon::parse($state)->format('d/m/Y'))
                     ->columnSpan(1),
                 TextEntry::make('time')->label('Hora')->columnSpan(1),
                 TextEntry::make('attachment')
-                                                ->label('Edital')
-                                                ->formatStateUsing(fn($state) => $state ? 'Ver Edital' : 'Sem Anexo')
-                                                ->url(fn($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment) : null)
-                                                ->openUrlInNewTab(),
+                    ->label('Edital')
+                    ->formatStateUsing(fn($state) => $state ? 'Ver Edital' : 'Sem Anexo')
+                    ->url(fn($record) => $record->attachment ? Storage::disk('attachments')->url($record->attachment) : null)
+                    ->openUrlInNewTab(),
             ])->columns(3)
         ]);
     }
@@ -111,9 +107,9 @@ class PublicSessionResource extends Resource
     {
         return [
             'index' => Pages\ListPublicSessions::route('/'),
-//            'create' => Pages\CreatePublicSession::route('/create'),
+            //            'create' => Pages\CreatePublicSession::route('/create'),
             'view' => Pages\ViewPublicSession::route('/{record}'),
-//            'edit' => Pages\EditPublicSession::route('/{record}/edit'),
+            //            'edit' => Pages\EditPublicSession::route('/{record}/edit'),
         ];
     }
 

@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ClientResource\RelationManagers;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Pages\ListRecords\Tab;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -31,31 +32,52 @@ class SpendingsRelationManager extends RelationManager
                     ->label('Data')
                     ->format('d/m/Y')
                     ->required(),
+
                 Money::make('total')
                     ->label('Total')
                     ->prefix('R$ ')
                     ->required(),
+
                 Forms\Components\Select::make('category_id')
                     ->label('Categoria')
                     ->relationship('category', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
+
                 Forms\Components\Select::make('type')
                     ->label('Tipo')
                     ->options([
                         'spending_mean' => 'Veículo',
                         'spending_supplier' => 'Fornecedor',
                     ])
+                    ->required()
+                    ->live()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $set('mean_id', null);
+                        $set('supplier_id', null);
+                    })
+                    ,
+
+                Forms\Components\Select::make('mean_id')
+                    ->label('Veículo')
+                    ->relationship('mean', 'name')
                     ->searchable()
-                    ->required(),
+                    ->preload()
+                    //visible function if type is spending_mean
+                    ->visible(
+                        fn($record, $get) => $get('type') === 'spending_mean'
+                    ),
+
                 Forms\Components\Select::make('supplier_id')
                     ->label('Fornecedor')
                     ->relationship('supplier', 'name')
                     ->searchable()
                     ->preload()
-                    ->required()
-                ->columnSpanFull(),
+                    ->visible(
+                        fn($record, $get) => $get('type') === 'spending_supplier'
+                    ),
+
             ]);
     }
 
@@ -67,7 +89,7 @@ class SpendingsRelationManager extends RelationManager
             ->recordTitle('Investimento')
             ->recordTitleAttribute('date')
             ->columns([
-                Tables\Columns\TextColumn::make('supplier.name')->searchable()->label('Fornecedor')->searchable(),
+                // Tables\Columns\TextColumn::make('supplier.name')->searchable()->label('Fornecedor')->searchable(),
                 Tables\Columns\TextColumn::make('total')->money('BRL'),
                 Tables\Columns\TextColumn::make('date')->label('Data')->searchable(),
                 Tables\Columns\TextColumn::make('category.name')->searchable()->label('Categoria')->searchable(),
@@ -75,9 +97,9 @@ class SpendingsRelationManager extends RelationManager
             ->filters([
                 SelectFilter::make('category_id')
                     ->relationship('category', 'name')
-                ->name('Categoria')
-                ->searchable()
-                ->preload()
+                    ->name('Categoria')
+                    ->searchable()
+                    ->preload()
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
@@ -97,10 +119,10 @@ class SpendingsRelationManager extends RelationManager
     {
         return [
             'Means' => Tab::make('Veículos', 'spendings')->query(function (Builder $query) {
-                $query->where('type', 'spending_mean');
+                $query->where('mean_id', '!=', null);
             }),
             'Suppliers' => Tab::make('Fornecedores', 'spendings')->query(function (Builder $query) {
-                $query->where('type', 'spending_supplier');
+                $query->where('supplier_id', '!=', null);
             }),
         ];
     }

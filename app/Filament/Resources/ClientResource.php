@@ -78,7 +78,7 @@ class ClientResource extends Resource
                                     ->prefix('Telefone')
                                     ->hiddenLabel()
                                     ->mask(
-                                        RawJs::make( <<<'JS'
+                                        RawJs::make(<<<'JS'
                                             $input.length > 14
                                                 ? '(99) 99999-9999'
                                                 : '(99) 9999-9999'
@@ -123,21 +123,21 @@ class ClientResource extends Resource
                         }),
                     EditAction::make()->label('Editar'),
 
-//                    Action::make('mean')
-//                        ->label('Veículos')
-//                        ->icon('heroicon-o-megaphone'),
-//
-//                    Action::make('supplier')
-//                        ->label('Fornecedores')
-//                        ->icon('heroicon-o-truck'),
-//
-//                    Action::make('spending')
-//                        ->label('Investimentos')
-//                        ->icon('heroicon-o-banknotes'),
-//
-//                    Action::make('publicSession')
-//                        ->label('Sessões Públicas')
-//                        ->icon('heroicon-o-user-group'),
+                    //                    Action::make('mean')
+                    //                        ->label('Veículos')
+                    //                        ->icon('heroicon-o-megaphone'),
+                    //
+                    //                    Action::make('supplier')
+                    //                        ->label('Fornecedores')
+                    //                        ->icon('heroicon-o-truck'),
+                    //
+                    //                    Action::make('spending')
+                    //                        ->label('Investimentos')
+                    //                        ->icon('heroicon-o-banknotes'),
+                    //
+                    //                    Action::make('publicSession')
+                    //                        ->label('Sessões Públicas')
+                    //                        ->icon('heroicon-o-user-group'),
 
                     DeleteAction::make()->label('Deletar'),
                 ]),

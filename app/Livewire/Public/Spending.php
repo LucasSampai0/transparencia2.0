@@ -34,6 +34,7 @@ class Spending extends Component
     public function getSpendingSuppliersProperty()
     {
         return $this->client->spendings()
+            ->with('supplier')
             ->where('type', 'spending_supplier')
             ->whereYear('date', $this->year)
             ->whereMonth('date', $this->month)
@@ -43,6 +44,7 @@ class Spending extends Component
     public function getSpendingMeansProperty()
     {
         return $this->client->spendings()
+            ->with('mean')
             ->where('type', 'spending_mean')
             ->whereYear('date', $this->year)
             ->whereMonth('date', $this->month)

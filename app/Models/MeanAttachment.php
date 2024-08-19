@@ -19,7 +19,4 @@ class MeanAttachment extends Model
     {
         return $this->belongsTo(Mean::class);
     }
-
-
-
 }

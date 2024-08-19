@@ -17,8 +17,11 @@ return new class extends Migration
             $table->decimal('total', 10, 2);
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
-            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
             $table->string('type');
+            $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->unsignedBigInteger('mean_id')->nullable();
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('mean_id')->references('id')->on('means')->onDelete('cascade');
             $table->timestamps();
         });
     }

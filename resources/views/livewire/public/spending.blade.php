@@ -62,7 +62,7 @@
                             Categoria
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Fornecedor
+                            Veículos
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Total
@@ -76,7 +76,7 @@
                                 {{$mean->category->name}}
                             </th>
                             <th scope="row" class="p-6 py-4 font-medium text-gray-400 whitespace-nowrap dark:text-white group-hover:text-black">
-                                {{$mean->supplier->name}}
+                                {{$mean->mean->name}}
                             </th>
                             <th scope="row" class="p-6 py-4 font-medium text-gray-400 whitespace-nowrap dark:text-white group-hover:text-black">
                                 R$ {{number_format($mean->total, 2, ',', '.')}}

@@ -10,7 +10,7 @@ class OnlineProposal extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'client_id',
         'public_session_id',
         'company_name',
@@ -45,6 +45,4 @@ class OnlineProposal extends Model
     {
         return $this->belongsTo(Client::class);
     }
-
 }
-

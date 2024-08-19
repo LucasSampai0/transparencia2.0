@@ -57,7 +57,7 @@ class OnlineProposalResource extends Resource
                             Forms\Components\Textarea::make('company_number'),
                             Forms\Components\Textarea::make('company_state'),
                             Forms\Components\Textarea::make('company_city'),
-                    ]),
+                        ]),
                     Forms\Components\Wizard\Step::make('Faturamento')
                         ->schema([
                             Forms\Components\Textarea::make('bank_code'),
@@ -65,21 +65,21 @@ class OnlineProposalResource extends Resource
                             Forms\Components\Textarea::make('bank_account'),
                         ]),
                     Forms\Components\Wizard\Step::make('Representante Legal')
-                    ->schema([
+                        ->schema([
                             Forms\Components\Textarea::make('legal_representative_name'),
                             Forms\Components\Textarea::make('legal_representative_cpf'),
                             Forms\Components\Textarea::make('legal_representative_email'),
                             Forms\Components\Textarea::make('legal_representative_phone'),
                         ]),
                     Forms\Components\Wizard\Step::make('Proposta')
-                    ->schema([
-                        Forms\Components\Textarea::make('proposal_description'),
-                        Forms\Components\Textarea::make('proposal_value'),
-                        Forms\Components\DatePicker::make('proposal_expiry_date')->formatStateUsing(fn ($state) => Carbon::parse($state)->format('d/m/Y')),
-                        Forms\Components\FileUpload::make('proposal_signed_attachment'),
-                    ]),
+                        ->schema([
+                            Forms\Components\Textarea::make('proposal_description'),
+                            Forms\Components\Textarea::make('proposal_value'),
+                            Forms\Components\DatePicker::make('proposal_expiry_date')->formatStateUsing(fn($state) => Carbon::parse($state)->format('d/m/Y')),
+                            Forms\Components\FileUpload::make('proposal_signed_attachment'),
+                        ]),
                 ])
-                ->columnSpanFull(),
+                    ->columnSpanFull(),
             ]);
     }
 

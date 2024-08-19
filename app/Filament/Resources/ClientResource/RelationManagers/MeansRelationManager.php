@@ -80,7 +80,6 @@ class MeansRelationManager extends RelationManager
                             ->createItemButtonLabel('Adicionar Documento'),
                     ])->columnSpanFull(),
             ]);
-
     }
 
     public function table(Table $table): Table

@@ -18,5 +18,4 @@ class EditClient extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-    
 }

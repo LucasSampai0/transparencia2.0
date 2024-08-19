@@ -40,6 +40,4 @@ class Supplier extends Model
     {
         return $this->spendings->sum('total');
     }
-
-
 }
