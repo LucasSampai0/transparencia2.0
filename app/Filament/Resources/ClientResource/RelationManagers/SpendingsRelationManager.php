@@ -64,6 +64,7 @@ class SpendingsRelationManager extends RelationManager
                     ->relationship('mean', 'name')
                     ->searchable()
                     ->preload()
+                    ->columnSpanFull()
                     //visible function if type is spending_mean
                     ->visible(
                         fn($record, $get) => $get('type') === 'spending_mean'
@@ -74,6 +75,7 @@ class SpendingsRelationManager extends RelationManager
                     ->relationship('supplier', 'name')
                     ->searchable()
                     ->preload()
+                    ->columnSpanFull()
                     ->visible(
                         fn($record, $get) => $get('type') === 'spending_supplier'
                     ),
@@ -84,15 +86,17 @@ class SpendingsRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
-
         return $table
             ->recordTitle('Investimento')
             ->recordTitleAttribute('date')
             ->columns([
-                // Tables\Columns\TextColumn::make('supplier.name')->searchable()->label('Fornecedor')->searchable(),
+                Tables\Columns\TextColumn::make('name')->searchable()->label('Nome')
+                ->getStateUsing(
+                    fn($record) => $record->mean_id ? $record->mean->name : $record->supplier->name
+                ),
                 Tables\Columns\TextColumn::make('total')->money('BRL'),
                 Tables\Columns\TextColumn::make('date')->label('Data')->searchable(),
-                Tables\Columns\TextColumn::make('category.name')->searchable()->label('Categoria')->searchable(),
+                Tables\Columns\TextColumn::make('category.name')->searchable()->label('Categoria'),
             ])
             ->filters([
                 SelectFilter::make('category_id')
