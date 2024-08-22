@@ -44,7 +44,8 @@ class MeansRelationManager extends RelationManager
                             ->label('Nome')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('cnpj')->label('CNPJ')
+                        Forms\Components\TextInput::make('cnpj')
+                            ->label('CNPJ')
                             ->required()
                             ->mask('99.999.999/9999-99'),
                         Forms\Components\Select::make('category_id')

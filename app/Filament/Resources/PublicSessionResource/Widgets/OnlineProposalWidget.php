@@ -35,7 +35,7 @@ class OnlineProposalWidget extends BaseWidget
         $dateNow = Carbon::now()->startOfDay();
         $hourNow = Carbon::now();
 
-        if ($date <= $dateNow && $hour <= $hourNow) {
+        if ($date <= $dateNow) {
             return $table
                 ->deferLoading()
                 ->striped()

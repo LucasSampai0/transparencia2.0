@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,108 +11,78 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
 
 
     <!-- Styles -->
     @livewireStyles
 </head>
+
 <body class="font-sans antialiased">
-<x-banner/>
+    <x-banner />
 
-<div class="bg-gray-100">
-    {{--            @livewire('')--}}
-
-    <!-- Page Content -->
-    <main>
-        <div>
-
-            <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button"
-                    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd"
-                          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-                </svg>
-            </button>
-
-            <aside id="logo-sidebar" class="border-r fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-                <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                    <a href="{{ url($client->slug) }}" class="flex items-center mb-5">
-                        <img src="{{ asset('storage/logos/logo_text.png') }}" alt="Logo">
-                        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
-                    </a>
-                    <ul class="space-y-2 font-medium">
-                        <li>
-                            <a href="{{route('client.mean', ['slug' => $client->slug])}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <x-heroicon-o-tv class="w-6 h-6 text-[#93dd00]"/>
-                                <span class="ms-3">Veículos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('client.supplier', ['slug' => $client->slug])}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <x-heroicon-o-user-group class="w-6 h-6 text-[#93dd00]"/>
-                                <span class="ms-3">Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('client.spending', ['slug' => $client->slug])}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <x-heroicon-o-document-chart-bar class="w-6 h-6 text-[#93dd00]"/>
-                                <span class="ms-3">Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('client.public-session', ['slug' => $client->slug])}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <x-heroicon-o-megaphone class="w-6 h-6 text-[#93dd00]"/>
-
-                                <span class="ms-3">Dashboard</span>
-                            </a>
-                        </li>
-                    </ul>
+    <div class="bg-gray-100">
+        <!-- Page Content -->
+        <main x-data="{open: false}" class="flex">
+            <div class="min-h-screen bg-red-400 flex absolute z-50 p-1">
+                <div 
+                x-show="open" 
+                x-cloak class="w-48">
+                    teste
                 </div>
-            </aside>
-        </div>
-        <div class="sm:ml-64 min-h-screen">
-            <div class="class= flex flex-col rounded-lg dark:border-gray-700 min-h-screen">
-                <div class="flex items-center justify-start gap-4 p-4 border-b bg-gray-50 dark:bg-gray-800 shadow-md z-10">
-                    <div>
-                        <a href=" /{{$client->slug}} ">
-                            <img class="w-32 h-32 rounded-full " src="{{ Storage::disk('logos')->url($client->logo) }}" alt="{{$client->name}}">
-                        </a>
-                    </div>
-                    <div class="gap-y-2 flex flex-col">
-                        <h1 class="text-2xl font-bold">{{$client->name}}</h1>
-                        <h2 class="text-xl">{{$client->address}}</h2>
-                        <h2><span class="font-bold">CNPJ: </span>{{$client->cnpj}}</h2>
-                        <div class="flex gap-5">
-                            @if(isset($client->phone))
+                <div>
+                    <x-heroicon-o-bars-3-bottom-left x-on:click="open = !open" class="w-12 h-12 border border-gray-300 rounded-lg" />
+                </div>
+            </div>
+            <div class="min-h-screen ml-12 flex-grow">
+                <div class="class= flex flex-col rounded-lg dark:border-gray-700 min-h-screen">
+                    <div
+                        class="flex items-center justify-start gap-4 p-4 border-b bg-gray-50 dark:bg-gray-800 shadow-md z-10">
+                        <div>
+                            <a href=" /{{$client->slug}} ">
+                                <img class="w-32 h-32 rounded-full "
+                                    src="{{ Storage::disk('logos')->url($client->logo) }}" alt="{{$client->name}}">
+                            </a>
+                        </div>
+                        <div class="gap-y-2 flex flex-col">
+                            <h1 class="text-2xl font-bold">{{$client->name}}</h1>
+                            <h2 class="text-xl">{{$client->address}}</h2>
+                            <h2><span class="font-bold">CNPJ: </span>{{$client->cnpj}}</h2>
+                            <div class="flex gap-5">
+                                @if(isset($client->phone))
                                 <div class="flex">
-                                    <x-heroicon-o-phone class="w-5 h-5"/>
+                                    <x-heroicon-o-phone class="w-5 h-5" />
                                     <h2>{{$client->phone}}</h2>
                                 </div>
-                            @endif
-                            @if(isset($client->site))
+                                @endif
+                                @if(isset($client->site))
                                 <div>
                                     <a class="flex" href="{{$client->site}}">
-                                        <x-heroicon-o-globe-alt class="w-5 h-5"/>
+                                        <x-heroicon-o-globe-alt class="w-5 h-5" />
                                         <h2>{{$client->site}}</h2>
                                     </a>
                                 </div>
-                            @endif
+                                @endif
+                            </div>
                         </div>
                     </div>
+                    {{ $slot }}
                 </div>
-                {{ $slot }}
             </div>
-        </div>
-    </main>
-</div>
+        </main>
+    </div>
 
-@stack('modals')
+    @stack('modals')
 
-@livewireScripts
+    @livewireScripts
 </body>
+
 </html>

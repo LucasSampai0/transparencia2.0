@@ -88,7 +88,14 @@ class SupplierRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\Action::make('viewAttachments')
+                    ->label('Ver Documentos')
+                    ->icon('heroicon-o-eye')
+                    ->modalHeading('Documentos')
+                    ->modalContent(function ($record) {
+                        return view('filament.resources.supplier.view-attachments-modal', ['supplier' => $record]);
+                    })
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
