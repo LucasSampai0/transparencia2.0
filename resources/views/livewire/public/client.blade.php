@@ -67,16 +67,6 @@
             </a>
         </div>
     </div>
-    <div class="max-w-56 min-w-[18rem] xl:min-w-[22rem] border-l absolute xl:relative right-0 lg:block bg-gray-50" 
-    x-show="open"
-    x-on:click.away="open = false"
-    x-cloak
-    >
-        <livewire:date-picker>
-            <div class="p-4">
-                teste
-            </div>
-    </div>
 </div>
 
 
