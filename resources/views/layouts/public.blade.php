@@ -80,10 +80,10 @@
                             alt="{{$client->name}}">
                     </a>
                 <div class="gap-y-2 flex flex-col">
-                    <h1 class="text-md md:text-2xl font-bold md:text-start">{{$client->name}}</h1>
-                    <h2 class="text-xs md:text-xl">{{$client->address}}</h2>
-                    <h2 class="text-xs md:text-lg"><span class="font-bold">CNPJ: </span>{{$client->cnpj}}</h2>
-                    <div class="flex gap-x-5 text-xs md:text-lg flex-col md:flex-row">
+                    <h1 class="dark:text-white text-md md:text-2xl font-bold md:text-start">{{$client->name}}</h1>
+                    <h2 class="dark:text-white text-xs md:text-xl">{{$client->address}}</h2>
+                    <h2 class="dark:text-white text-xs md:text-lg"><span class="font-bold">CNPJ: </span>{{$client->cnpj}}</h2>
+                    <div class="dark:text-white flex gap-x-5 text-xs md:text-lg flex-col md:flex-row">
                         @if(isset($client->phone))
                         <div class="flex">
                             <x-heroicon-o-phone class="w-3 h-3 md:w-5 md:h-5" />
