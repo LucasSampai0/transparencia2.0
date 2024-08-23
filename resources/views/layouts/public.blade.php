@@ -122,7 +122,7 @@
             <div class="min-h-screen flex-grow">
                 <div class="class=flex flex-col rounded-lg dark:border-gray-700 min-h-screen">
                     <div
-                        class="flex items-center justify-start gap-4 p-4 py-2 md:p-4 border-b bg-gray-50 dark:bg-gray-800 shadow-md z-10">
+                        class="flex items-center justify-start gap-4 p-4 py-2 md:p-4 border-b dark:border-gray-950 bg-gray-50 dark:bg-gray-700 shadow-md z-10">
                         <a href=" /{{$client->slug}} ">
                             <img class="min-w-20 h-20 md:w-32 md:h-32 rounded-full "
                                 src="{{ Storage::disk('logos')->url($client->logo) }}" alt="{{$client->name}}">
