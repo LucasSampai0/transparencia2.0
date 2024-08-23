@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mobile_menu">
+            <div id="mobile_menu" class="md:hidden">
                 <div class="bg-[#93dd00] p-2 flex justify-end z-20 relative">
                     <x-heroicon-o-bars-3-bottom-left x-on:click="open = !open"
                         class="w-8 h-8 border border-black rounded-lg cursor-pointer" />
@@ -120,7 +120,7 @@
 
             </div>
             <div class="min-h-screen flex-grow">
-                <div class="class=flex flex-col rounded-lg dark:border-gray-800 min-h-screen">
+                <div class="class=flex flex-col rounded-lg md:ml-12 dark:border-gray-800 min-h-screen">
                     <div
                         class="flex items-center justify-start gap-4 p-4 py-2 md:p-4 border-b dark:border-gray-950 bg-gray-50 dark:bg-gray-800 shadow-md z-10">
                         <a href=" /{{$client->slug}} ">

@@ -7,8 +7,8 @@
                 Resumo de investimentos
             </x-button>
         </div>
-        <div class=" dark:text-white grid p-4 mb-8 rounded-lg bg-gray-50 dark:bg-gray-700 grid-cols-6 overflow-hidden">
-            <div class="col-span-5 gap-3">
+        <div class=" dark:text-white flex flex-col-reverse gap-y-8 justify-between md:flex-row p-4 mb-8 gap-x-8 rounded-lg bg-gray-50 dark:bg-gray-700 overflow-hidden">
+            <div class="gap-3">
                 <h1 class="text-3xl font-bold mb-5">Bem vindo ao transparencia.ppg</h1>
                 <p class="text-lg max-w-4xl mb-5">
                     Este portal é dirigido à administração pública e está em acordo com as diretrizes da Lei 12.232 de
@@ -22,8 +22,8 @@
                     </a>
                 </button>
             </div>
-            <div class="col-span-1 content-center">
-                <img src="{{ asset('storage/logos/logo.png') }}" alt="Logo">
+            <div class="content-center">
+                <img class="w-full max-w-80" src="{{ asset('storage/logos/logo.png') }}" alt="Logo">
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-8 mb-4">
