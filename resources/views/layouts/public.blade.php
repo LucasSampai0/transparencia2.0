@@ -84,7 +84,7 @@
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="transform"
                     x-transition:leave-end="transform -translate-y-96"
-                    class="absolute right-0 w-full bg-white rounded-md shadow-lg z-10">
+                    class="absolute right-0 w-full bg-white rounded-md shadow-lg z-20">
                     <div class="w-full p-4">
                         <div class="mb-8">
                             <img src="{{Storage::disk('logos')->url('logo.png')}}" alt="" class="w-56">
