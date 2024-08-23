@@ -1,7 +1,7 @@
 <div
     x-data="{ month:@entangle('Month') }"
-    class="p-4 bg-white rounded-xl shadow-md">
-    <div class="flex justify-between p-3 border-b">
+    class="p-4 bg-white rounded-xl">
+    <div class="flex justify-between pb-2 border-b">
         <x-heroicon-o-chevron-left class="w-9 h-9 text-gray-800 cursor-pointer"
                                    wire:click="decrementYear"
         />
@@ -10,7 +10,7 @@
                                     wire:click="incrementYear"
         />
     </div>
-    <div class="grid grid-cols-4 grid-rows-3 gap-8 text-center p-3 font-black text-xl">
+    <div class="grid grid-cols-4 grid-rows-3 gap-4 pt-2 text-center font-black justify-items-center">
         @foreach(range(1, 12) as $month)
             <span aria-label="{{$month}}"
                   :class="{'bg-[#93DD00] text-white': month === {{$month}}}"
@@ -22,7 +22,7 @@
         @endforeach
 
     </div>
-    <h3 class=" font-black text-xl text-center">
+    <h3 class="font-black text-xl text-center pt-4">
         {{DateTime::createFromFormat('!m', $this->Month)->format('F')}}/{{$Year}}
     </h3>
 </div>
