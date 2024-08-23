@@ -67,34 +67,33 @@
                 </div>
             </div>
             <div class="p-2 transition-all"
-                x-bind:class="{'bg-white text-black': open, 'bg-[#93dd00] text-white': !open}">
+                x-bind:class="{'bg-white text-black': open, 'bg-[#93dd00] text-white': !open}"
+                x-cloak>
                 <x-heroicon-o-bars-3-bottom-left x-on:click="open = !open" class="w-6 h-6 md:w-8 md:h-8 border-2 rounded-lg cursor-pointer" />
             </div>
     </div>
-    <div class="min-h-screen ml-8 md:ml-12 flex-grow">
-        <div class="class= flex flex-col rounded-lg dark:border-gray-700 min-h-screen">
-            <div class="flex items-center justify-start gap-4 p-4 border-b bg-gray-50 dark:bg-gray-800 shadow-md z-10">
-                <div>
+    <div class="min-h-screen ml-10 md:ml-12 flex-grow">
+        <div class="class=flex flex-col rounded-lg dark:border-gray-700 min-h-screen">
+            <div class="flex items-center justify-start gap-4 p-2 md:p-4 border-b bg-gray-50 dark:bg-gray-800 shadow-md z-10">
                     <a href=" /{{$client->slug}} ">
-                        <img class="min-w-20 max-h-20 md:w-32 md:max-h-32 rounded-full " src="{{ Storage::disk('logos')->url($client->logo) }}"
+                        <img class="min-w-14 max-h-14 md:w-32 md:max-h-32 rounded-full " src="{{ Storage::disk('logos')->url($client->logo) }}"
                             alt="{{$client->name}}">
                     </a>
-                </div>
                 <div class="gap-y-2 flex flex-col">
-                    <h1 class="text-xl md:text-2xl font-bold">{{$client->name}}</h1>
-                    <h2 class="md:text-xl">{{$client->address}}</h2>
-                    <h2 class="text-sm md:text-lg"><span class="font-bold">CNPJ: </span>{{$client->cnpj}}</h2>
-                    <div class="flex gap-x-5 text-sm md:text-lg flex-col md:flex-row">
+                    <h1 class="text-md md:text-2xl font-bold md:text-start">{{$client->name}}</h1>
+                    <h2 class="text-xs md:text-xl">{{$client->address}}</h2>
+                    <h2 class="text-xs md:text-lg"><span class="font-bold">CNPJ: </span>{{$client->cnpj}}</h2>
+                    <div class="flex gap-x-5 text-xs md:text-lg flex-col md:flex-row">
                         @if(isset($client->phone))
                         <div class="flex">
-                            <x-heroicon-o-phone class="w-5 h-5" />
+                            <x-heroicon-o-phone class="w-3 h-3 md:w-5 md:h-5" />
                             <h2>{{$client->phone}}</h2>
                         </div>
                         @endif
                         @if(isset($client->site))
                         <div>
                             <a class="flex" href="{{$client->site}}">
-                                <x-heroicon-o-globe-alt class="w-5 h-5" />
+                                <x-heroicon-o-globe-alt class="w-3 h-3 md:w-5 md:h-5" />
                                 <h2>{{$client->site}}</h2>
                             </a>
                         </div>
