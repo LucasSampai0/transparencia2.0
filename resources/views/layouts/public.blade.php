@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div id="mobile_menu" class="md:hidden">
-                <div class="bg-[#93dd00] p-2 flex justify-end z-20 relative">
+                <div class="bg-[#93dd00] p-2 flex justify-end z-30 relative">
                     <x-heroicon-o-bars-3-bottom-left x-on:click="open = !open"
                         class="w-8 h-8 border border-black rounded-lg cursor-pointer" />
                 </div>
