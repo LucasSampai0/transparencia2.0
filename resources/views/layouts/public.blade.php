@@ -29,7 +29,7 @@
 <body class="font-sans antialiased">
     <x-banner />
 
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 dark:bg-gray-900">
         <!-- Page Content -->
         <main x-data="{open: false}" class="flex flex-col md:flex-row">
             <div id="desktop_menu">
