@@ -1,6 +1,6 @@
 @section('title', 'Relação de veículos - ' . $client->name)
 
-<div class="p-4 lg:p-8">
+<div class="p-4 lg:p-8 dark:bg-gray-900">
     @if($categories->isEmpty())
     <div class="text-center">
         <p class="text-2xl font-semibold text-[#3C7034]">

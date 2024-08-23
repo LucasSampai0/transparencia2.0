@@ -1,7 +1,7 @@
 @section('title', 'Investimentos - ' . $client->name)
 
 <div class="p-4 lg:p-8">
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-4 gap-4 dark:bg-gray-900">
         <div class="col-span-1">
             <livewire:date-picker/>
         </div>

@@ -1,7 +1,7 @@
 @section('title', 'Sessões Públicas - ' . $client->name)
 
 
-<div class="p-4 lg:p-8">
+<div class="p-4 lg:p-8 dark:bg-gray-900">
     <div x-data="{ showToast: true }" x-init="setTimeout(() => showToast = false, 10000)" class="absolute right-3 top-3 z-10">
         @if(session('success'))
         <div id="toast-success" x-show="showToast" x-transition:leave="transition ease-in duration-500"
