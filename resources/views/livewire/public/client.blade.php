@@ -1,13 +1,13 @@
 @section('title', $client->name)
 
 <div class="flex flex-row flex-grow overflow-x-hidden" x-data="{ open: false }">
-    <div class="p-8">
+    <div class="p-8 dark:bg-gray-900">
         <div class="flex justify-end mb-8">
             <x-button class="!bg-[#93DD00]" x-on:click="open = !open">
                 Resumo de investimentos
             </x-button>
         </div>
-        <div class="grid p-4 mb-8 rounded-lg bg-gray-50 dark:bg-gray-800 grid-cols-6 overflow-hidden">
+        <div class=" dark:text-white grid p-4 mb-8 rounded-lg bg-gray-50 dark:bg-gray-800 grid-cols-6 overflow-hidden">
             <div class="col-span-5 gap-3">
                 <h1 class="text-3xl font-bold mb-5">Bem vindo ao transparencia.ppg</h1>
                 <p class="text-lg max-w-4xl mb-5">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-8 mb-4">
-            <a class="group flex flex-col items-center justify-between rounded bg-gray-50 dark:bg-gray-800 rounded-lg pt-8 gap-12 overflow-hidden"
+            <a class="group flex flex-col items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-lg pt-8 gap-12 overflow-hidden"
                 href="{{route('client.mean', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-tv class="w-32 h-32 text-[#93dd00]" />
