@@ -80,7 +80,7 @@
         </div>
     </div>
     <div x-show="open" x-cloak x-on:click.away="open = false" class="bg-white dark:bg-gray-700 border-l dark:border-black p-3 min-w-80 md:min-w-96 right-0 h-vh sticky lg:h-auto">
-        <x-heroicon-o-x-mark class="w-8 h-8 cursor-pointer"
+        <x-heroicon-o-x-mark class="w-8 h-8 cursor-pointer text-[#93dd00]"
         x-on:click="open = !open"
         />
         <div>
