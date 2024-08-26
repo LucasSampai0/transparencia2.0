@@ -41,7 +41,7 @@
     </div>
     @else
     <div class="grid grid-cols-1 xl:grid-cols-1 gap-12">
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-xl">
+        <div class="relative overflow-x-auto sm:rounded-lg bg-white shadow-xl">
             <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead>
                     <tr class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">

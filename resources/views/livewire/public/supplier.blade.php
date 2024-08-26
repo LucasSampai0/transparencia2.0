@@ -11,7 +11,7 @@
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
         @foreach($categories as $category)
         <div>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-lg">
+            <div class="relative overflow-x-auto sm:rounded-lg bg-white shadow-lg">
                 <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead>
                         <tr class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">
