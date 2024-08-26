@@ -5,12 +5,12 @@
         <x-heroicon-o-chevron-left class="w-9 h-9 text-gray-800 dark:text-white cursor-pointer"
                                    wire:click="decrementYear"
         />
-        <span class="text-3xl font-bold">{{$Year}}</span>
+        <span class="text-3xl font-bold text-gray-800 dark:text-white">{{$Year}}</span>
         <x-heroicon-o-chevron-right class="w-9 h-9 text-gray-800 dark:text-white cursor-pointer"
                                     wire:click="incrementYear"
         />
     </div>
-    <div class="grid grid-cols-4 grid-rows-3 gap-4 pt-2 text-center font-black justify-items-center">
+    <div class="grid grid-cols-4 grid-rows-3 gap-4 pt-2 text-center font-black justify-items-center text-gray-800 dark:text-white">
         @foreach(range(1, 12) as $month)
             <span aria-label="{{$month}}"
                   :class="{'bg-[#93DD00] text-white': month === {{$month}}}"
