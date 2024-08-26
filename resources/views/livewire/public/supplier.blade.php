@@ -13,11 +13,15 @@
         <div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-lg">
                 <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead>
+                        <tr class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">
+                            <th scope="col" colspan="3" class="px-6 py-3">
+                                {{$category->name}}
+                            </th>
+                        </tr>
+                    </thead>
                     <thead
                         class="text-xs uppercase bg-white dark:bg-gray-700 dark:text-gray-400 text-[#3C7034] border-b">
-                        <h2 class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">
-                            {{$category->name}}
-                        </h2>
                         <tr class="font-semibold">
                             <th scope="col" class="px-6 py-3">
                                 Nome
