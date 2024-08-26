@@ -1,12 +1,12 @@
 <div
     x-data="{ month:@entangle('Month') }"
-    class="p-4 bg-white rounded-xl">
+    class="p-4 bg-white dark:bg-gray-800 rounded-xl">
     <div class="flex justify-between pb-2 border-b">
-        <x-heroicon-o-chevron-left class="w-9 h-9 text-gray-800 cursor-pointer"
+        <x-heroicon-o-chevron-left class="w-9 h-9 text-gray-800 dark:text-white cursor-pointer"
                                    wire:click="decrementYear"
         />
         <span class="text-3xl font-bold">{{$Year}}</span>
-        <x-heroicon-o-chevron-right class="w-9 h-9 text-gray-800 cursor-pointer"
+        <x-heroicon-o-chevron-right class="w-9 h-9 text-gray-800 dark:text-white cursor-pointer"
                                     wire:click="incrementYear"
         />
     </div>
@@ -22,7 +22,7 @@
         @endforeach
 
     </div>
-    <h3 class="font-black text-xl text-center pt-4">
+    <h3 class="font-black text-xl text-center pt-4 text-gray-800 dark:text-white">
         {{DateTime::createFromFormat('!m', $this->Month)->format('F')}}/{{$Year}}
     </h3>
 </div>
