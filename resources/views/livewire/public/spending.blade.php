@@ -6,8 +6,8 @@
             <livewire:date-picker />
         </div>
         <div class="flex flex-col flex-grow gap-6">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-xl">
-                <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <div class="relative overflow-x-auto sm:rounded-lg bg-white shadow-xl">
+                <table class="w-full text-sm dark:bg-gray-700 text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead>
                         <tr>
                             <th colspan="3">
@@ -63,7 +63,7 @@
                 @endif
             </div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-xl">
-                <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead>
                         <tr>
                             <th colspan="3">
