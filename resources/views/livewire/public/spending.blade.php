@@ -52,7 +52,7 @@
                     </tbody>
                 </table>
                 @if($spendingSuppliers->isEmpty())
-                <div class="p-6 text-center text-lg dark:bg-gray-700 text-gray-400 dark:text-white">
+                <div class="p-6 text-center text-lg dark:bg-gray-800 text-gray-400 dark:text-white">
                     Nenhum fornecedor encontrado
                 </div>
                 @endif
@@ -108,7 +108,7 @@
                     </tbody>
                 </table>
                 @if($spendingMeans->isEmpty())
-                <div class="p-6 text-center text-lg dark:bg-gray-700 text-gray-400 dark:text-white">
+                <div class="p-6 text-center text-lg dark:bg-gray-800 text-gray-400 dark:text-white">
                     Nenhum veículo encontrado
                 </div>
                 @endif
