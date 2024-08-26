@@ -80,16 +80,16 @@
         </div>
     </div>
     <div x-show="open" x-cloak x-on:click.away="open = false"
-        class="bg-white dark:bg-gray-700 border-l p-3 min-w-96 right-0 h-dvh sticky lg:h-auto">
+        class="bg-white dark:bg-gray-700 border-l dark:border-black p-3 min-w-96 right-0 h-dvh sticky lg:h-auto">
         <div>
             <livewire:date-picker></livewire:date-picker>
             @foreach($spendings as $spending)
-            <div class="flex justify-between items-center border-b p-2">
+            <div class="flex justify-between items-center border-b dark:border-black p-2">
                 <h1 class="font-bold">{{$spending->category->name}}</h1>
                 <h1>R$ {{number_format($spending->total, 2, ',', '.')}}</h1>
             </div>
             @endforeach
-            <div class="flex justify-between items-center border-b p-2">
+            <div class="flex justify-between items-center border-b dark:border-black p-2">
                 <h1 class="font-bold">Total</h1>
                 <h1>R$ {{number_format($totalSpendings, 2, ',', '.')}}</h1>
             </div>
