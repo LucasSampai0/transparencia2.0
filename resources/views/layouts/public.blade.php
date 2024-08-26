@@ -85,7 +85,9 @@
                     class="absolute right-0 w-full bg-white rounded-md shadow-lg z-20">
                     <div class="w-full p-4">
                         <div class="mb-8">
-                            <img src="{{Storage::disk('logos')->url('logo.png')}}" alt="" class="w-56">
+                            <a href="/{{$client->slug}}">
+                                <img src="{{Storage::disk('logos')->url('logo.png')}}" alt="" class="w-56">
+                            </a>
                         </div>
                         <div class="text-xl flex flex-col gap-4">
                             <a href="{{route('client.mean', ['slug' => $client->slug])}}">

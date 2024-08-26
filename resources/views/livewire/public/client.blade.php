@@ -8,23 +8,26 @@
             </x-button>
         </div>
         <div
-            class=" dark:text-white flex flex-col-reverse gap-y-8 justify-between md:flex-row p-4 mb-8 gap-x-8 rounded-lg bg-gray-50 dark:bg-gray-700 overflow-hidden">
-            <div class="gap-3">
-                <h1 class="text-3xl font-bold mb-5">Bem vindo ao transparencia.ppg</h1>
-                <p class="text-lg max-w-4xl mb-5">
-                    Este portal é dirigido à administração pública e está em acordo com as diretrizes da Lei 12.232 de
-                    29 de abril de 2010, em cumprimento do ao artigo 16.
-                </p>
+            class=" dark:text-white flex flex-col gap-y-8 justify-between md:flex-row mb-8 rounded-lg bg-gray-50 dark:bg-gray-700 overflow-hidden">
+            <div>
+                <div class="p-4 mb-4">
+                    <h1 class="text-3xl font-bold mb-5">Bem vindo ao transparencia.ppg</h1>
+                    <p class="text-lg max-w-4xl mb-5">
+                        Este portal é dirigido à administração pública e está em acordo com as diretrizes da Lei 12.232 de
+                        29 de abril de 2010, em cumprimento do ao artigo 16.
+                    </p>
+                    <img class="w-full max-w-48 md:hidden mx-auto" src="{{ asset('storage/logos/logo-icon.png') }}" alt="Logo">
+                </div>
                 <button
-                    class="px-5 py-2 bg-[#93DD00] rounded-tr-xl translate-x-[-9rem] translate-y-4 relative hover:translate-x-[-1rem] transition">
-                    <a class="text-2xl text-white flex gap-x-6" href="">
+                    class="px-5 py-2 bg-[#93DD00] w-full md:w-auto rounded-none md:rounded-tr-xl text-center relative transition">
+                    <a class="text-2xl text-white flex gap-x-6 justify-center" href="">
                         Ver mais
                         <x-heroicon-c-chevron-right class="w-8 h-8" />
                     </a>
                 </button>
             </div>
-            <div class="content-center">
-                <img class="w-full max-w-80" src="{{ asset('storage/logos/logo.png') }}" alt="Logo">
+            <div class="content-center hidden md:block p-4">
+                <img class="w-full min-w-24 max-w-80" src="{{ asset('storage/logos/logo-icon.png') }}" alt="Logo">
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-8 mb-4">
@@ -83,7 +86,7 @@
         x-transition:enter-start="transform translate-x-96" x-transition:enter-end="transform"
         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="transform"
         x-transition:leave-end="transform translate-x-96"
-        class="bg-white dark:bg-gray-700 border-l dark:border-black p-2 min-w-80 md:min-w-96 right-0 h-vh sticky lg:h-auto">
+        class="bg-white dark:bg-gray-700 border-l dark:border-black p-2 min-w-80 md:min-w-96 right-0 lg:h-auto">
         <x-heroicon-o-x-mark class="w-8 h-8 cursor-pointer text-[#93dd00]" x-on:click="open = !open" />
         <div>
             <livewire:date-picker></livewire:date-picker>
