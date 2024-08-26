@@ -78,11 +78,9 @@
                     <x-heroicon-o-bars-3-bottom-left x-on:click="open = !open"
                         class="w-8 h-8 border border-black rounded-lg cursor-pointer" />
                 </div>
-                <div x-show="open" @click.away="open = false" x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="transform -translate-y-96"
-                    x-transition:enter-end="transform "
-                    x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="transform"
+                <div x-show="open" on:click.away="open = false" x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="transform -translate-y-96" x-transition:enter-end="transform "
+                    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="transform"
                     x-transition:leave-end="transform -translate-y-96"
                     class="absolute right-0 w-full bg-white rounded-md shadow-lg z-20">
                     <div class="w-full p-4">
