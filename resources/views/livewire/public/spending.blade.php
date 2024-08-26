@@ -62,8 +62,8 @@
                 </div>
                 @endif
             </div>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-xl">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <div class="relative overflow-x-auto sm:rounded-lg bg-white shadow-xl">
+                <table class="w-full text-sm dark:bg-gray-700 text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead>
                         <tr>
                             <th colspan="3">
