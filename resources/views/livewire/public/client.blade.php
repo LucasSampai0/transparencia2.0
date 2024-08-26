@@ -84,13 +84,13 @@
         <div>
             <livewire:date-picker></livewire:date-picker>
             @foreach($spendings as $spending)
-            <div class="flex justify-between items-center border-b dark:border-black p-2">
-                <h1 class="font-bold dark:text-white">{{$spending->category->name}}</h1>
+            <div class="flex justify-between items-center border-b dark:border-black dark:text-white p-2">
+                <h1 class="font-bold">{{$spending->category->name}}</h1>
                 <h1>R$ {{number_format($spending->total, 2, ',', '.')}}</h1>
             </div>
             @endforeach
-            <div class="flex justify-between items-center border-b dark:border-black p-2">
-                <h1 class="font-bold dark:text-white">Total</h1>
+            <div class="flex justify-between items-center border-b dark:border-black dark:text-white p-2">
+                <h1 class="font-bold">Total</h1>
                 <h1>R$ {{number_format($totalSpendings, 2, ',', '.')}}</h1>
             </div>
         </div>
