@@ -31,7 +31,7 @@
                 href="{{route('client.mean', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-tv class="w-32 h-32 text-[#93dd00]" />
-                    <h4 class="text-center text-xl font-bold text-[#3C7034]  px-6">Relação de Veículos</h4>
+                    <h4 class="text-center text-xl font-bold text-[#3C7034] dark:text-white px-6">Relação de Veículos</h4>
                 </div>
                 <button
                     class="w-full px-4 py-1 bg-[#93DD00] relative translate-y-full group-hover:translate-y-0 transition text-xl text-white flex justify-center">
@@ -42,7 +42,7 @@
                 href="{{route('client.supplier', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-user-group class="w-32 h-32 text-[#93dd00]" />
-                    <h4 class="text-center text-xl font-bold text-[#3C7034]  px-6">Relação de Fornecedores de Serviços
+                    <h4 class="text-center text-xl font-bold text-[#3C7034] dark:text-white px-6">Relação de Fornecedores de Serviços
                         Complementares</h4>
                 </div>
                 <button
@@ -54,7 +54,7 @@
                 href="{{route('client.spending', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-document-chart-bar class="w-32 h-32 text-[#93dd00]" />
-                    <h4 class="text-center text-xl font-bold text-[#3C7034] px-6">Relatório de Investimentos em
+                    <h4 class="text-center text-xl font-bold text-[#3C7034] dark:text-white px-6">Relatório de Investimentos em
                         Publicidade</h4>
                 </div>
                 <button
@@ -66,7 +66,7 @@
                 href="{{route('client.public-session', ['slug' => $client->slug])}}">
                 <div class="flex flex-col items-center gap-y-6">
                     <x-heroicon-o-megaphone class="w-32 h-32 text-[#93dd00]" />
-                    <h4 class="text-center text-xl font-bold text-[#3C7034]  px-6">Sessão Pública</h4>
+                    <h4 class="text-center text-xl font-bold text-[#3C7034] dark:text-white  px-6">Sessão Pública</h4>
                 </div>
                 <button
                     class="w-full px-4 py-1 bg-[#93DD00] relative translate-y-full group-hover:translate-y-0 transition text-xl text-white flex justify-center">

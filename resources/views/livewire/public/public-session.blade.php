@@ -43,10 +43,14 @@
     <div class="grid grid-cols-1 xl:grid-cols-1 gap-12">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white shadow-xl">
             <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead>
+                    <tr class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">
+                        <th scope="col" colspan="3" class="px-6 py-3">
+                            Sessões Públicas
+                        </th>
+                    </tr>
+                </thead>
                 <thead class="text-xs uppercase bg-white dark:bg-gray-700 dark:text-gray-400 text-[#3C7034] border-b">
-                    <h2 class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">
-                        Sessões Públicas
-                    </h2>
                     <tr class="font-semibold text-lg">
                         <th scope="col" class="px-6 py-3">
                             Descrição
@@ -62,7 +66,7 @@
                 <tbody>
                     @foreach($publicSessions as $publicSession)
                     <tr x-on:click="$dispatch('open-modal', { id: '{{$publicSession->id}}' })"
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-lg group cursor-pointer">
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 group cursor-pointer">
                         <th scope="row"
                             class="p-6 py-4 max-w-xl font-medium text-gray-400 dark:text-white text-justify group-hover:text-black">
                             {{ $this->limitString($publicSession->description, 175 ) }}
@@ -110,12 +114,12 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-6 p-4">
+                <button>
                 <a href="{{ asset('storage/attachments/' . $publicSession->attachment) }}"
                     class="bg-[#68DC00] py-2 px-4 rounded-lg text-white text-xl font-bold shadow-lg text-center">
-                    <button>
-                        Ver Edital
-                    </button>
+                    Ver Edital
                 </a>
+            </button>
                 <button class="bg-[#68DC00] py-2 px-4 rounded-lg text-white text-xl font-bold shadow-lg"
                     x-on:click="$dispatch('open-modal', { id: 'online-proposal-{{$publicSession->id}}' })">
                     Enviar Proposta Online
