@@ -56,11 +56,10 @@ class OnlineProposalForm extends Component
         curl_setopt($response, CURLOPT_RETURNTRANSFER, true);
         $result = json_decode(curl_exec($response));
         curl_close($response);
-        if(is_null($result)){
+        if (is_null($result)) {
             session()->flash('company_zipcode', 'CEP não encontrado.');
             return;
-        }
-        else{
+        } else {
             $this->company_address = $result->logradouro;
             $this->company_neighborhood = $result->bairro;
             $this->company_city = $result->localidade;
@@ -91,7 +90,7 @@ class OnlineProposalForm extends Component
         'proposal_expiry_date' => 'required|date|after:today',
         'proposal_signed_attachment' => 'required|file|mimes:pdf'
     ];
-    
+
 
     protected $messages = [
         'company_name.required' => 'O campo nome da empresa é obrigatório.',
@@ -127,6 +126,10 @@ class OnlineProposalForm extends Component
 
     ];
 
+    public function updated($field)
+    {
+        $this->validateOnly($field);
+    }
 
     public function store()
     {
@@ -134,10 +137,9 @@ class OnlineProposalForm extends Component
         $this->mount($this->client->id, $this->publicSession->id);
 
         $this->proposal_value = str_replace('.', '', $this->proposal_value);
-        
+
 
         $this->validate();
-
 
 
         OnlineProposal::create([

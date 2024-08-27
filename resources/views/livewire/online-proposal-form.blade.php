@@ -1,4 +1,13 @@
 <div x-data="{step: 1}">
+    <div
+     wire:loading
+     class="!absolute inset-0 w-full h-full transform bg-white bg-opacity-50 p-4 rounded-md shadow-md z-50">
+        <div class="flex justify-center items-center h-full">
+            <div class="flex">
+                <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#93dd00]"></div>
+            </div>
+        </div>
+    </div>
     <div>
         <div class="grid grid-cols-4 rounded-md overflow-hidden">
             <p x-on:click="step = 1"
@@ -21,7 +30,7 @@
                 <div class="col-span-3">
                     <div>
                         <x-label for="company_cnpj">CNPJ</x-label>
-                        <x-input class="w-full" x-mask="99.999.999/9999-99" wire:model="company_cnpj" id="company_cnpj"
+                        <x-input class="w-full" x-mask="99.999.999/9999-99" wire:model.lazy="company_cnpj" id="company_cnpj"
                             type="text"></x-input>
                     </div>
                     @error('company_cnpj')
@@ -31,7 +40,7 @@
                 <div class="col-span-3">
                     <div>
                         <x-label for="company_name">Razão Social</x-label>
-                        <x-input class="w-full" wire:model="company_name" id="company_name" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="company_name" id="company_name" type="text"></x-input>
                     </div>
                     @error('company_name')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -40,7 +49,7 @@
                 <div class="col-span-3">
                     <div>
                         <x-label for="company_IE">Inscrição Estadual</x-label>
-                        <x-input class="w-full" wire:model="company_IE" id="company_IE" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="company_IE" id="company_IE" type="text"></x-input>
                     </div>
                     @error('company_IE')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -49,7 +58,7 @@
                 <div class="col-span-3">
                     <div>
                         <x-label for="company_IM">Inscrição Municipal</x-label>
-                        <x-input class="w-full" wire:model="company_IM" id="company_IM" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="company_IM" id="company_IM" type="text"></x-input>
                     </div>
                     @error('company_IM')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -58,7 +67,7 @@
                 <div class="col-span-2">
                     <x-label for="company_zipcode">CEP</x-label>
                     <div class="inline-flex w-full">
-                        <x-input class="w-full" wire:model="company_zipcode"
+                        <x-input class="w-full" wire:model.lazy="company_zipcode"
                             wire:change='searchZipCode($event.target.value)' id="company_zipcode" type="text"></x-input>
                     </div>
                     @if (session()->has('company_zipcode'))
@@ -81,7 +90,7 @@
                 <div class="col-span-2">
                     <div>
                         <x-label for="company_neighborhood">Bairro</x-label>
-                        <x-input class="w-full" wire:model="company_neighborhood" id="company_neighborhood" type="text">
+                        <x-input class="w-full" wire:model.lazy="company_neighborhood" id="company_neighborhood" type="text">
                         </x-input>
                     </div>
                     @error('company_neighborhood')
@@ -91,7 +100,7 @@
                 <div class="col-span-1">
                     <div>
                         <x-label for="company_number">Número</x-label>
-                        <x-input class="w-full" wire:model="company_number" id="company_number" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="company_number" id="company_number" type="text"></x-input>
                     </div>
                     @error('company_number')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -100,7 +109,7 @@
                 <div class="col-span-1">
                     <div>
                         <x-label for="company_state">Estado</x-label>
-                        <x-input class="w-full" wire:model="company_state" id="company_state" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="company_state" id="company_state" type="text"></x-input>
                     </div>
                     @error('company_state')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -109,7 +118,7 @@
                 <div class="col-span-2">
                     <div>
                         <x-label for="company_city">Cidade</x-label>
-                        <x-input class="w-full" wire:model="company_city" id="company_city" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="company_city" id="company_city" type="text"></x-input>
                     </div>
                     @error('company_city')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -126,7 +135,7 @@
                 <div>
                     <div>
                         <x-label for="bank_code">Número do Banco</x-label>
-                        <x-input class="w-full" wire:model="bank_code" id="bank_code" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="bank_code" id="bank_code" type="text"></x-input>
                     </div>
                     @error('bank_code')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -135,7 +144,7 @@
                 <div>
                     <div>
                         <x-label for="bank_agency">Agência</x-label>
-                        <x-input class="w-full" wire:model="bank_agency" id="bank_agency" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="bank_agency" id="bank_agency" type="text"></x-input>
                     </div>
                     @error('bank_agency')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -144,7 +153,7 @@
                 <div>
                     <div>
                         <x-label for="bank_account">Conta</x-label>
-                        <x-input class="w-full" wire:model="bank_account" id="bank_account" type="text"></x-input>
+                        <x-input class="w-full" wire:model.lazy="bank_account" id="bank_account" type="text"></x-input>
                     </div>
                     @error('bank_account')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -162,7 +171,7 @@
                 <div>
                     <div>
                         <x-label for="legal_representative_name">Nome</x-label>
-                        <x-input class="w-full" wire:model="legal_representative_name" id="legal_representative_name"
+                        <x-input class="w-full" wire:model.lazy="legal_representative_name" id="legal_representative_name"
                             type="text"></x-input>
                     </div>
                     @error('legal_representative_name')
@@ -172,7 +181,7 @@
                 <div>
                     <div>
                         <x-label for="legal_representative_cpf">CPF</x-label>
-                        <x-input class="w-full" x-mask="999.999.999-99" wire:model="legal_representative_cpf"
+                        <x-input class="w-full" x-mask="999.999.999-99" wire:model.lazy="legal_representative_cpf"
                             id="legal_representative_cpf" type="text"></x-input>
                     </div>
                     @error('legal_representative_cpf')
@@ -182,7 +191,7 @@
                 <div>
                     <div>
                         <x-label for="legal_representative_email">Email</x-label>
-                        <x-input class="w-full" wire:model="legal_representative_email" id="legal_representative_email"
+                        <x-input class="w-full" wire:model.lazy="legal_representative_email" id="legal_representative_email"
                             type="text"></x-input>
                     </div>
                     @error('legal_representative_email')
@@ -192,7 +201,7 @@
                 <div>
                     <div>
                         <x-label for="legal_representative_phone">Telefone</x-label>
-                        <x-input class="w-full" x-mask:dynamic="phoneMask" wire:model="legal_representative_phone"
+                        <x-input class="w-full" x-mask:dynamic="phoneMask" wire:model.lazy="legal_representative_phone"
                             id="legal_representative_phone" type="text"></x-input>
                     </div>
                     @error('legal_representative_phone')
@@ -221,7 +230,7 @@
                 <div class="col-span-3">
                     <div>
                         <x-label for="proposal_description">Descrição da Proposta</x-label>
-                        <textarea rows="5" wire:model="proposal_description"
+                        <textarea rows="5" wire:model.lazy="proposal_description"
                             class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                             id="proposal_description" type="text"></textarea>
                     </div>
@@ -232,7 +241,7 @@
                 <div>
                     <div>
                         <x-label for="proposal_value">Valor da Proposta</x-label>
-                        <x-input class="w-full" x-mask:dynamic="$money($input, ',')" wire:model="proposal_value"
+                        <x-input class="w-full" x-mask:dynamic="$money($input, ',')" wire:model.lazy="proposal_value"
                             id="proposal_value" type="text"></x-input>
                     </div>
                     @error('proposal_value')
@@ -242,7 +251,7 @@
                 <div>
                     <div>
                         <x-label for="proposal_expiry_date">Data de Vencimento</x-label>
-                        <x-input class="w-full" wire:model="proposal_expiry_date" id="proposal_expiry_date" type="date">
+                        <x-input class="w-full" wire:model.lazy="proposal_expiry_date" id="proposal_expiry_date" type="date">
                         </x-input>
                     </div>
                     @error('proposal_expiry_date')
@@ -253,7 +262,7 @@
                     <div>
 
                         <x-label for="proposal_signed_attachment">Proposta Assinada</x-label>
-                        <x-input class="w-full" wire:model="proposal_signed_attachment" id="proposal_signed_attachment"
+                        <x-input class="w-full" wire:model.lazy="proposal_signed_attachment" id="proposal_signed_attachment"
                             type="file"></x-input>
                     </div>
                     @error('proposal_signed_attachment')
