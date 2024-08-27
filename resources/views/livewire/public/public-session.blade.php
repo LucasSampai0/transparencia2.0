@@ -96,7 +96,7 @@
     </div>
     @foreach($publicSessions as $publicSession)
     <x-filament::modal :close-button="true" id="{{$publicSession->id}}" width="2xl">
-        <div class="relative overflow-x-auto overflow-hidden rounded-md grid grid-cols-1 gap-y-8 !dark:text-white">
+        <div class="relative overflow-x-auto overflow-hidden rounded-md grid grid-cols-1 gap-y-8 dark:text-white">
             <div>
                 <p class="text-xl font-medium">Descrição</p>
                 <div class="max-h-[18rem] overflow-y-auto">
