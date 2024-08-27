@@ -1,7 +1,7 @@
 <div x-data="{step: 1}">
     <div
      wire:loading
-     class="!absolute inset-0 w-full h-full transform bg-white bg-opacity-50 p-4 rounded-md shadow-md z-50">
+     class="!absolute inset-0 w-full h-full transform p-4 rounded-md shadow-md z-50">
         <div class="flex justify-center items-center h-full">
             <div class="flex">
                 <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#93dd00]"></div>
