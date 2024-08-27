@@ -124,8 +124,14 @@
                     <div
                         class="flex items-center justify-start gap-4 p-4 py-2 md:p-4 border-b dark:border-gray-950 bg-gray-50 dark:bg-gray-800 shadow-md z-10">
                         <a href=" /{{$client->slug}} ">
+                            @if($client->logo)
                             <img class="min-w-20 h-20 md:w-32 md:h-32 rounded-full "
                                 src="{{ Storage::disk('logos')->url($client->logo) }}" alt="{{$client->name}}">
+                            
+                            @else
+                            <img class="min-w-20 h-20 md:w-32 md:h-32 rounded-full "
+                                src="/storage/logos/placeholder.png" alt="{{$client->name}}">
+                            @endif
                         </a>
                         <div class="gap-y-2 flex flex-col">
                             <h1 class="dark:text-white text-md md:text-2xl font-bold md:text-start">{{$client->name}}

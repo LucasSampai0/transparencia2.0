@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
                 @if($suppliers[$category->id]->total() > 5)
-                <div class="px-6 py-2 font-medium text-gray-900 ">
+                <div class="px-6 py-2 font-medium dark:bg-gray-800 text-gray-900 ">
                     {{ $suppliers[$category->id]->links() }}
                 </div>
                 @endif

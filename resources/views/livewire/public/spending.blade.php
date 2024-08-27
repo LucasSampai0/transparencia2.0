@@ -58,7 +58,7 @@
             @endif
             
             @if($spendingSuppliers->total() > 5)
-                <div class="px-6 py-3">
+                <div class="px-6 py-3 dark:bg-gray-800">
                     {{ $spendingSuppliers->links() }}
                 </div>
             @endif
@@ -114,7 +114,7 @@
                 </div>
                 @endif
                 @if($spendingMeans->total() > 5)
-                <div class="px-6 py-3">
+                <div class="px-6 py-3 dark:bg-gray-800">
                     {{ $spendingMeans->links() }}
                 </div>
                 @endif

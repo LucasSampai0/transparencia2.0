@@ -12,8 +12,7 @@
         @foreach($categories as $category)
         <div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
-                <table
-                    class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm bg-white text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead>
                         <tr class="px-6 py-3 uppercase text-xl font-semibold text-white bg-[#68DC00]">
                             <th scope="col" colspan="3" class="px-6 py-3">
@@ -65,7 +64,7 @@
                     </tbody>
                 </table>
                 @if($means[$category->id]->total() > 5)
-                <div class="px-6 py-2 font-medium text-gray-900 ">
+                <div class="px-6 py-2 dark:bg-gray-800">
                     {{ $means[$category->id]->links() }}
                 </div>
                 @endif

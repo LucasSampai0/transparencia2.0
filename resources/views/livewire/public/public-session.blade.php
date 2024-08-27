@@ -87,7 +87,7 @@
                 </tbody>
             </table>
             @if($publicSessions->total() > 5)
-            <div class="p-6">
+            <div class="p-6 dark:bg-gray-800">
                 {{$publicSessions->links()}}
             </div>
             @endif
@@ -126,7 +126,7 @@
                 </button>
             </div>
         </div>
-        <x-filament::modal :close-button="true" id="online-proposal-{{$publicSession->id}}" width="5xl">
+        <x-filament::modal :close-button="true" id="online-proposal-{{$publicSession->id}}" width="4xl">
             <div class="relative overflow-x-auto overflow-hidden rounded-md grid grid-cols-1 gap-y-8">
                 @livewire('online-proposal-form', ['client_id' => $client->id, 'public_session_id' =>
                 $publicSession->id])
