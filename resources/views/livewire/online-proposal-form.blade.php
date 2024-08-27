@@ -255,7 +255,7 @@
                         </x-input>
                     </div>
                     @error('proposal_expiry_date')
-                    <span class="text-red-400 text-sm dark:text-">{{ $message }}</span>
+                    <span class="text-red-500 text-sm dark:text-">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
