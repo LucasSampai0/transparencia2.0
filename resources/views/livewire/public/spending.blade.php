@@ -55,12 +55,13 @@
                 <div class="p-6 text-center text-lg dark:bg-gray-800 text-gray-400 dark:text-white">
                     Nenhum fornecedor encontrado
                 </div>
-                @endif
-                @if($spendingSuppliers->total() > 5)
+            @endif
+            
+            @if($spendingSuppliers->total() > 5)
                 <div class="px-6 py-3">
                     {{ $spendingSuppliers->links() }}
                 </div>
-                @endif
+            @endif
             </div>
             <div class="relative overflow-x-auto sm:rounded-lg bg-white shadow-xl">
                 <table class="w-full text-sm dark:bg-gray-700 text-left rtl:text-right text-gray-500 dark:text-gray-400">
