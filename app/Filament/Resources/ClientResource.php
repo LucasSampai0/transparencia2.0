@@ -103,8 +103,7 @@ class ClientResource extends Resource
                 ImageColumn::make('logo')
                     ->circular()
                     ->disk('logos')
-                    ->label('Logo')
-                    ->placeholder('https://via.placeholder.com/150'),
+                    ->label('Logo'),
                 TextColumn::make('name')->label('Nome')->searchable()->sortable(),
                 TextColumn::make('cnpj')->label('CNPJ')->searchable()->toggleable(),
                 TextColumn::make('address')->label('Endereço')->searchable()->toggleable(),

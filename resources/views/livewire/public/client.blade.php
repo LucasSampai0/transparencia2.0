@@ -13,10 +13,12 @@
                 <div class="p-4 mb-4">
                     <h1 class="text-3xl font-bold mb-5">Bem vindo ao transparencia.ppg</h1>
                     <p class="text-lg max-w-4xl mb-5">
-                        Este portal é dirigido à administração pública e está em acordo com as diretrizes da Lei 12.232 de
+                        Este portal é dirigido à administração pública e está em acordo com as diretrizes da Lei 12.232
+                        de
                         29 de abril de 2010, em cumprimento do ao artigo 16.
                     </p>
-                    <img class="w-full max-w-48 md:hidden mx-auto" src="{{ asset('storage/logos/logo-icon.png') }}" alt="Logo">
+                    <img class="w-full max-w-48 md:hidden mx-auto" src="{{ asset('storage/logos/logo-icon.png') }}"
+                        alt="Logo">
                 </div>
                 <button
                     class="px-5 py-2 bg-[#93DD00] w-full md:w-auto rounded-none md:rounded-tr-xl text-center relative transition">

@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('legal_representative_email');
             $table->string('legal_representative_phone');
             $table->text('proposal_description');
-            $table->decimal('proposal_value', 10, 2);
+            $table->decimal('proposal_value', 16, 2);
             $table->date('proposal_expiry_date');
             $table->string('proposal_signed_attachment');
             $table->timestamps();
