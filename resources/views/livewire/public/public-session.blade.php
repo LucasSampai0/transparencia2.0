@@ -96,20 +96,20 @@
     </div>
     @foreach($publicSessions as $publicSession)
     <x-filament::modal :close-button="true" id="{{$publicSession->id}}" width="2xl">
-        <div class="relative overflow-x-auto overflow-hidden rounded-md grid grid-cols-1 gap-y-8 dark:!text-white">
+        <div class="relative overflow-x-auto overflow-hidden rounded-md grid grid-cols-1 gap-y-8">
             <div>
-                <p class="text-xl font-medium">Descrição</p>
+                <p class="text-xl font-medium dark:text-white">Descrição</p>
                 <div class="max-h-[18rem] overflow-y-auto">
                     <p>{{$publicSession->description}}</p>
                 </div>
             </div>
             <div class="grid grid-cols-2">
                 <div>
-                    <p class="text-xl font-medium">Data</p>
+                    <p class="text-xl font-medium dark:text-white">Data</p>
                     <p>{{ \Carbon\Carbon::parse($publicSession->date)->format('d/m/Y') }}</p>
                 </div>
                 <div>
-                    <p class="text-xl font-medium">Hora</p>
+                    <p class="text-xl font-medium dark:text-white">Hora</p>
                     <p>{{$publicSession->time}}</p>
                 </div>
             </div>
