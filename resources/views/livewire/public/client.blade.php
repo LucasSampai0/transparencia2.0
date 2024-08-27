@@ -22,7 +22,7 @@
                 </div>
                 <button
                     class="px-5 py-2 bg-[#93DD00] w-full md:w-auto rounded-none md:rounded-tr-xl text-center relative transition">
-                    <a class="text-2xl text-white flex gap-x-6 justify-center" href="">
+                    <a class="text-2xl text-white flex gap-x-6 justify-center" href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12232.htm">
                         Ver mais
                         <x-heroicon-c-chevron-right class="w-8 h-8" />
                     </a>
@@ -88,17 +88,17 @@
         x-transition:enter-start="transform translate-x-96" x-transition:enter-end="transform"
         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="transform"
         x-transition:leave-end="transform translate-x-96"
-        class="bg-white dark:bg-gray-700 border-l dark:border-black p-2 min-w-80 md:min-w-96 right-0 lg:h-auto">
+        class="bg-white dark:bg-gray-700 border-l dark:border-black p-2 min-w-80 md:min-w-96 right-0 lg:h-auto overflow-y-scroll">
         <x-heroicon-o-x-mark class="w-8 h-8 cursor-pointer text-[#93dd00]" x-on:click="open = !open" />
         <div>
             <livewire:date-picker></livewire:date-picker>
             @foreach($spendings as $spending)
-            <div class="flex justify-between items-center border-b dark:border-black dark:text-white p-2">
+            <div class="flex justify-between items-center dark:text-white p-2">
                 <h1 class="font-bold">{{$spending->category->name}}</h1>
                 <h1>R$ {{number_format($spending->total, 2, ',', '.')}}</h1>
             </div>
             @endforeach
-            <div class="flex justify-between items-center border-b dark:border-black dark:text-white p-2">
+            <div class="flex justify-between items-center border-b dark:border-gray-500 dark:text-white p-2">
                 <h1 class="font-bold">Total</h1>
                 <h1>R$ {{number_format($totalSpendings, 2, ',', '.')}}</h1>
             </div>
