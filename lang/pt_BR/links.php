@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'previous' => __('pagination.previous'), // Usando a função __() para tradução
-    'next' => __('pagination.next'),
+    'previous' => __('Próximo'), // Usando a função __() para tradução
+    'next' => __('Anterior'),
     'showing' => 'Mostrando',
     'to' => 'a',
     'of' => 'de',
