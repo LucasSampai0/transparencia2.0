@@ -87,7 +87,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-3 md:col-span-2">
                     <div>
                         <x-label class="dark:text-white"  for="company_neighborhood">Bairro</x-label>
                         <x-input class="w-full dark:text-white dark:bg-gray-800 dark:border-[#93DD00]" wire:model.lazy="company_neighborhood" id="company_neighborhood" type="text">
@@ -97,7 +97,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 md:col-span-1">
                     <div>
                         <x-label class="dark:text-white"  for="company_number">Número</x-label>
                         <x-input class="w-full dark:text-white dark:bg-gray-800 dark:border-[#93DD00]" wire:model.lazy="company_number" id="company_number" type="text"></x-input>
@@ -106,7 +106,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 md:col-span-1">
                     <div>
                         <x-label class="dark:text-white"  for="company_state">Estado</x-label>
                         <x-input class="w-full dark:text-white dark:bg-gray-800 dark:border-[#93DD00]" wire:model.lazy="company_state" id="company_state" type="text"></x-input>
@@ -115,7 +115,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-3 md:col-span-2">
                     <div>
                         <x-label class="dark:text-white"  for="company_city">Cidade</x-label>
                         <x-input class="w-full dark:text-white dark:bg-gray-800 dark:border-[#93DD00]" wire:model.lazy="company_city" id="company_city" type="text"></x-input>
