@@ -23,34 +23,34 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Lucas | Arkus',
-        //     'email' => 'lucas.bueno@arkus.com.br',
-        //     'password' => '@Rkus142536',
-        //     'is_admin' => true
-        // ]);
+        User::factory()->create([
+            'name' => 'Lucas | Arkus',
+            'email' => 'lucas.bueno@arkus.com.br',
+            'password' => '@Rkus142536',
+            'is_admin' => true
+        ]);
 
-        Client::factory(1)->create();
+        // Client::factory(1)->create();
 
-        Category::factory(5)->create();
+        // Category::factory(5)->create();
 
-        $clients = Client::all();
+        // $clients = Client::all();
 
-        $clients->each(function ($client) {
-            PublicSession::factory(15)->create(['client_id' => $client->id]);
-            $means = Mean::factory(15)->create(['client_id' => $client->id]);
-            $suppliers = Supplier::factory(15)->create(['client_id' => $client->id]);
-            Spending::factory(15)->create(['client_id' => $client->id, 'type' => 'spending_mean']);
-            Spending::factory(15)->create(['client_id' => $client->id, 'type' => 'spending_supplier']);
+        // $clients->each(function ($client) {
+        //     PublicSession::factory(15)->create(['client_id' => $client->id]);
+        //     $means = Mean::factory(15)->create(['client_id' => $client->id]);
+        //     $suppliers = Supplier::factory(15)->create(['client_id' => $client->id]);
+        //     Spending::factory(15)->create(['client_id' => $client->id, 'type' => 'spending_mean']);
+        //     Spending::factory(15)->create(['client_id' => $client->id, 'type' => 'spending_supplier']);
 
-            $means->each(function ($mean) {
-                MeanAttachment::factory(15)->create(['mean_id' => $mean->id]);
-            });
+        //     $means->each(function ($mean) {
+        //         MeanAttachment::factory(15)->create(['mean_id' => $mean->id]);
+        //     });
 
-            $suppliers->each(function ($supplier) {
-                SupplierAttachment::factory(15)->create(['supplier_id' => $supplier->id]);
-            });
-        });
+        //     $suppliers->each(function ($supplier) {
+        //         SupplierAttachment::factory(15)->create(['supplier_id' => $supplier->id]);
+        //     });
+        // });
 
 
     }
