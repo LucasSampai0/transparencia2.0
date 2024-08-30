@@ -11,16 +11,16 @@
     <div>
         <div class="grid grid-cols-2 md:grid-cols-4 rounded-md overflow-hidden">
             <p x-on:click="step = 1"
-                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 1, 'bg-gray-100 dark:bg-gray-950 text-white font-bold cursor-pointer p-2': step !== 1 }">
+                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 1, 'bg-gray-100 dark:bg-gray-950 text-black font-bold cursor-pointer p-2': step !== 1 }">
                 Dados Iniciais</p>
             <p x-on:click="step = 2"
-                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 2, 'bg-gray-100 dark:bg-gray-950 text-white font-bold cursor-pointer p-2': step !== 2 }">
+                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 2, 'bg-gray-100 dark:bg-gray-950 text-black font-bold cursor-pointer p-2': step !== 2 }">
                 Dados Bancários</p>
             <p x-on:click="step = 3"
-                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 3, 'bg-gray-100 dark:bg-gray-950 text-white font-bold cursor-pointer p-2': step !== 3 }">
+                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 3, 'bg-gray-100 dark:bg-gray-950 text-black font-bold cursor-pointer p-2': step !== 3 }">
                 Representante Legal</p>
             <p x-on:click="step = 4"
-                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 4, 'bg-gray-100 dark:bg-gray-950 text-white font-bold cursor-pointer p-2': step !== 4 }">
+                :class="{ 'bg-[#93DD00] text-white font-bold cursor-pointer p-2': step === 4, 'bg-gray-100 dark:bg-gray-950 text-black font-bold cursor-pointer p-2': step !== 4 }">
                 Informações da Proposta</p>
         </div>
     </div>
