@@ -226,8 +226,8 @@
             </div>
         </div>
         <div x-show="step === 4">
-            <div class="grid grid-cols-3 gap-4 my-6">
-                <div class="col-span-3">
+            <div class="grid grid-cols-4 gap-4 my-6">
+                <div class="col-span-full">
                     <div>
                         <x-label class="dark:text-white"  for="proposal_description">Descrição da Proposta</x-label>
                         <textarea rows="5" wire:model.lazy="proposal_description"
@@ -238,7 +238,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div>
+                <div class="col-span-2 md:col-span-1">
                     <div>
                         <x-label class="dark:text-white"  for="proposal_value">Valor da Proposta</x-label>
                         <x-input class="w-full dark:text-white dark:bg-gray-800 dark:border-[#93DD00]" x-mask:dynamic="$money($input, ',')" wire:model.lazy="proposal_value"
@@ -248,7 +248,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div>
+                <div class="col-span-2 md:col-span-1">
                     <div>
                         <x-label class="dark:text-white"  for="proposal_expiry_date">Data de Vencimento</x-label>
                         <x-input class="w-full dark:text-white dark:bg-gray-800 dark:border-[#93DD00]" wire:model.lazy="proposal_expiry_date" id="proposal_expiry_date" type="date">
@@ -258,9 +258,8 @@
                     <span class="text-red-500 text-sm dark:text-">{{ $message }}</span>
                     @enderror
                 </div>
-                <div>
+                <div class="col-span-full md:col-span-2">
                     <div>
-
                         <x-label class="dark:text-white" for="proposal_signed_attachment">Proposta Assinada</x-label>
                         <x-input class="w-full dark:bg-gray-800 dark:border-[#93DD00] dark:text-white" wire:model.lazy="proposal_signed_attachment" id="proposal_signed_attachment"
                             type="file"></x-input>
@@ -269,7 +268,7 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="inline-flex col-span-3 gap-x-2">
+                <div class="inline-flex col-span-full gap-x-2">
                     <x-checkbox name="allowance" id="allowance" required></x-checkbox>
                     <x-label class="dark:text-white"  for="allowance">Eu concordo em salvar meus dados para fins de consulta.</x-label>
                 </div>
